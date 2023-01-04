@@ -20,7 +20,13 @@ Route::middleware('auth')->prefix('admin')->group(function(){
     });
     // قائمة المنتجات
     Route::prefix('items')->controller(ItemController::class)->group(function(){
-        Route::get('/', 'create')->name('items.create');
+        Route::get('/', 'show')->name('items.show');
+        // اضافة منتج
+        Route::get('/create', 'create')->name('items.create');
+        Route::post('/', 'store')->name('items.store');
+        Route::get('/{id}', 'edit')->name('items.edit');
+        Route::post('/{id}', 'update')->name('items.update');
+        Route::get('/{id}', 'destroy')->name('items.destroy');
     });
     // اضافة تصنيف
     Route::prefix('category')->controller(CategoryController::class)->group(function(){

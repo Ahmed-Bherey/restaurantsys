@@ -702,39 +702,43 @@ textarea {
 
 .items_header {
     background-color: #ff9f54;
-    height: 20vh;
+    height: 10vh;
     margin-top: 0;
 }
 
-.items_page {
+
+.item_box {
     margin: 0 20px;
-    top: 10%;
+    padding: 0 10px;
+    background-color: #d7d7d8;
 }
-.items_tab{
+
+.item_box .item_head {
     background-color: #edeef1;
-    padding: 15px;
-}
-
-.items_page .sys_header {
     padding: 10px;
-    background-color: #e2e3e5;
 }
 
-.items_page .item_header {
-    padding: 12px 7px;
+.item_box .box_header {
+    padding: 7px;
     background-color: #3b4c6b;
     color: white;
     margin: 15px;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
 }
 
+.item_box .box_header .controll_icon div {
+    display: inline-block;
+}
 
+.item_box .boxes {
+    margin: 10px 0;
+}
 
-.items_tab .item_box .item_box_img img {
+.item_box .boxes .box_content .item_box_img img {
     max-width: 100%;
     min-height: 170px;
     border-radius: 5px 5px 0 0;
@@ -743,16 +747,66 @@ textarea {
     -ms-border-radius: 5px 5px 0 0;
     -o-border-radius: 5px 5px 0 0;
 }
-.item_box .item_box_content{
+
+.item_box .boxes .box_content .item_box_content {
     background-color: white;
     padding: 7px;
 }
-.item_box .item_box_content .title,
-.item_box .item_box_content .price{
+
+.item_box .boxes .box_content .item_box_img {
+    overflow: hidden;
+}
+
+.item_box .boxes .box_content .item_controll .item_controll_icon div {
+    display: inline-block;
+    margin: 0 10px;
+    background-color: #09214e;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.item_box .boxes .box_content .item_controll {
+    background-color: rgba(43, 124, 124, 0.4);
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 10px;
+    transition: .7s ease-in-out;
+    -webkit-transition: .7s ease-in-out;
+    -moz-transition: .7s ease-in-out;
+    -ms-transition: .7s ease-in-out;
+    -o-transition: .7s ease-in-out;
+}
+
+.item_box .boxes .box_content .item_box_img:hover .item_controll {
+    top: 0;
+}
+
+.item_box .boxes .box_content {
+    box-shadow: 0px 4px 7px 1px grey;
+    border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    -ms-border-radius: 5px 5px 0 0;
+    -o-border-radius: 5px 5px 0 0;
+}
+
+.item_box .boxes .box_content .item_box_content .title,
+.item_box .boxes .box_content .item_box_content .price {
     color: #3b4c6b;
     font-weight: bold;
 }
-.item_box .item_box_content .price{
+
+.item_box .boxes .box_content .item_box_content .price {
     background-color: #a2b1da;
     padding: 3px;
     display: inline-block;
@@ -762,11 +816,40 @@ textarea {
     -ms-border-radius: 7px;
     -o-border-radius: 7px;
 }
-.item_box .item_box_content .desc{
+
+.item_box .boxes .box_content .item_box_content .desc {
     font-size: 14px;
 }
 
-.items_header .create_category{
+.item_box .box_header .plus_icon {
+    background-color: #09214e;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    transition: .7s ease-in-out;
+    -webkit-transition: .7s ease-in-out;
+    -moz-transition: .7s ease-in-out;
+    -ms-transition: .7s ease-in-out;
+    -o-transition: .7s ease-in-out;
+}
+
+.item_box .box_header .plus_icon:first-child:hover {
+    background-color: #209443fb;
+}
+
+.item_box .box_header .plus_icon:nth-child(2):hover {
+    background-color: #aca921;
+}
+
+.item_box .box_header .plus_icon:last-child:hover {
+    background-color: #942020fb;
+}
+
+.items_header .create_category {
     background-color: #3b4c6b;
     padding: 3px 7px;
     color: white;
@@ -780,14 +863,14 @@ textarea {
 }
 
 .create_category_form,
-.edit_cat_form{
+.edit_cat_form {
     top: 30%;
     left: 40%;
-    transform: translate(-40%,-30%);
-    -webkit-transform: translate(-40%,-30%);
-    -moz-transform: translate(-40%,-30%);
-    -ms-transform: translate(-40%,-30%);
-    -o-transform: translate(-40%,-30%);
+    transform: translate(-40%, -30%);
+    -webkit-transform: translate(-40%, -30%);
+    -moz-transform: translate(-40%, -30%);
+    -ms-transform: translate(-40%, -30%);
+    -o-transform: translate(-40%, -30%);
     background-color: #a2b1da;
     z-index: 9999;
     height: 0;
@@ -807,15 +890,15 @@ textarea {
     -ms-transition: .7s ease-in-out;
     -o-transition: .7s ease-in-out;
 }
+
 .create_category_form.show,
-.edit_cat_form.show
-{
+.edit_cat_form.show {
     height: auto;
     padding-top: 20px;
     padding-bottom: 20px;
 }
 
-.overflew{
+.overflew {
     top: 0;
     left: 0;
     width: 100%;
@@ -830,40 +913,11 @@ textarea {
     -ms-transition: .7s ease-in-out;
     -o-transition: .7s ease-in-out;
 }
-.overflew.opacity{
+
+.overflew.opacity {
     opacity: 1;
 }
-.overflew.displayBlock{
+
+.overflew.displayBlock {
     display: block;
-}
-.items_tab .item_header .plus_icon{
-    background-color: #09214e;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    border-radius: 50%;
-    cursor: pointer;
-    display: inline-block;
-    transition: .7s ease-in-out;
-    -webkit-transition: .7s ease-in-out;
-    -moz-transition: .7s ease-in-out;
-    -ms-transition: .7s ease-in-out;
-    -o-transition: .7s ease-in-out;
-}
-.items_tab .item_header .plus_icon:hover{
-    transform: rotateY(360deg);
-    -webkit-transform: rotateY(360deg);
-    -moz-transform: rotateY(360deg);
-    -ms-transform: rotateY(360deg);
-    -o-transform: rotateY(360deg);
-}
-.items_tab .item_header .plus_icon:first-child:hover{
-    background-color: #209443fb;
-}
-.items_tab .item_header .plus_icon:nth-child(2):hover{
-    background-color: #aca921;
-}
-.items_tab .item_header .plus_icon:last-child:hover{
-    background-color: #942020fb;
 }
