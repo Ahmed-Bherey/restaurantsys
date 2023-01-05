@@ -10,7 +10,7 @@
         </div>
         <div class="item_box">
             <div class="item_head">
-                <h4>ادارة قائمة النتجات</h4>
+                <h4>ادارة قائمة المنتجات</h4>
             </div>
             @foreach ($categories as $key => $category)
                 <div class="d-flex justify-content-between align-items-center box_header">
@@ -20,10 +20,13 @@
                             <a href="{{ route('items.create') }}" class="text-white"><i class="fa-solid fa-plus"></i></a>
                         </div>
                         <div class="plus_icon">
-                            <a href="" class="text-white"><i class="fa-regular fa-pen-to-square"></i></a>
+                            <a href="{{ route('category.edit', $category->id) }}" class="text-white"><i
+                                    class="fa-regular fa-pen-to-square"></i></a>
                         </div>
                         <div class="plus_icon">
-                            <a href="" class="text-white"><i class="fa-solid fa-trash"></i></a>
+                            <a href="{{ route('category.destroy', $category->id) }}" class="text-white" type="submit"
+                                onclick="return confirm('سيتم حذف جميع عناصر هذا التصنيف ايضا')"><i
+                                    class="fa-solid fa-trash"></i></a>
                         </div>
                     </div>
                 </div>
@@ -36,12 +39,13 @@
                                     <div class="item_controll position-absolute">
                                         <div class="item_controll_icon">
                                             <div>
-                                                <a href="#" class="text-white">
+                                                <a href="{{ route('items.edit', $item->id) }}" class="text-white">
                                                     <i class="fa-regular fa-pen-to-square"></i>
                                                 </a>
                                             </div>
                                             <div>
-                                                <a href="#" class="text-white">
+                                                <a href="{{ route('items.destroy', $item->id) }}" class="text-white"
+                                                    onclick="return confirm('هل حقا تريد حذف هذا العنصر ؟')">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </a>
                                             </div>

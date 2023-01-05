@@ -18,6 +18,13 @@ Route::middleware('auth')->prefix('admin')->group(function(){
         Route::post('/extra', 'extra')->name('extra.store');
         Route::post('/workHour', 'workHour')->name('workHour.store');
     });
+    // اضافة تصنيف
+    Route::prefix('category')->controller(CategoryController::class)->group(function(){
+        Route::post('/', 'store')->name('category.store');
+        Route::get('/{id}', 'edit')->name('category.edit');
+        Route::post('/{id}', 'update')->name('category.update');
+        Route::get('/destroy/{id}', 'destroy')->name('category.destroy');
+    });
     // قائمة المنتجات
     Route::prefix('items')->controller(ItemController::class)->group(function(){
         Route::get('/', 'show')->name('items.show');
@@ -26,12 +33,6 @@ Route::middleware('auth')->prefix('admin')->group(function(){
         Route::post('/', 'store')->name('items.store');
         Route::get('/{id}', 'edit')->name('items.edit');
         Route::post('/{id}', 'update')->name('items.update');
-        Route::get('/{id}', 'destroy')->name('items.destroy');
-    });
-    // اضافة تصنيف
-    Route::prefix('category')->controller(CategoryController::class)->group(function(){
-        Route::post('/', 'store')->name('category.store');
-        Route::get('/{id}', 'edit')->name('category.edit');
-        Route::post('/{id}', 'update')->name('category.update');
+        Route::get('/destroy/{id}', 'destroy')->name('items.destroy');
     });
 });
