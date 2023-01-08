@@ -3,8 +3,11 @@
 use App\Http\Controllers\Admin\AreaController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ExpenseController;
+use App\Http\Controllers\Admin\ExpenseSectionController;
 use App\Http\Controllers\Admin\GeneralSettingController;
 use App\Http\Controllers\Admin\ItemController;
+use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\Admin\TableController;
 use Illuminate\Support\Facades\Route;
 
@@ -52,5 +55,29 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('/{id}', 'edit')->name('table.edit');
         Route::post('/{id}', 'update')->name('table.update');
         Route::get('/destroy/{id}', 'destroy')->name('table.destroy');
+    });
+    // اضافة اقسام للمصروفات
+    Route::prefix('expenseSections')->controller(ExpenseSectionController::class)->group(function () {
+        Route::get('/', 'create')->name('expenseSection.create');
+        Route::post('/', 'store')->name('expenseSection.store');
+        Route::get('/{id}', 'edit')->name('expenseSection.edit');
+        Route::post('/{id}', 'update')->name('expenseSection.update');
+        Route::get('/destroy/{id}', 'destroy')->name('expenseSection.destroy');
+    });
+    // الموردين
+    Route::prefix('suppliers')->controller(SupplierController::class)->group(function () {
+        Route::get('/', 'create')->name('supplier.create');
+        Route::post('/', 'store')->name('supplier.store');
+        Route::get('/{id}', 'edit')->name('supplier.edit');
+        Route::post('/{id}', 'update')->name('supplier.update');
+        Route::get('/destroy/{id}', 'destroy')->name('supplier.destroy');
+    });
+    // اضافة مصروفات
+    Route::prefix('expenses')->controller(ExpenseController::class)->group(function () {
+        Route::get('/', 'create')->name('expense.create');
+        Route::post('/', 'store')->name('expense.store');
+        Route::get('/{id}', 'edit')->name('expense.edit');
+        Route::post('/{id}', 'update')->name('expense.update');
+        Route::get('/destroy/{id}', 'destroy')->name('expense.destroy');
     });
 });

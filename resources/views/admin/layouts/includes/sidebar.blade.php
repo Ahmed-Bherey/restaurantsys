@@ -76,13 +76,13 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{route('items.show')}}" class="nav-link">
+                    <a href="{{ route('items.show') }}" class="nav-link">
                         <i class="far fa-circle nav-icon green-1"></i>
                         <p>قائمة المنتجات</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('area.create')}}" class="nav-link">
+                    <a href="{{ route('area.create') }}" class="nav-link">
                         <i class="far fa-circle nav-icon green-1"></i>
                         <p>الطاولات</p>
                     </a>
@@ -97,19 +97,19 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('expenseSection.create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon green-1"></i>
                                 <p>الأقسام</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('supplier.create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon green-1"></i>
                                 <p>الموردين</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('expense.create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon green-1"></i>
                                 <p>اضافة مصروف</p>
                             </a>

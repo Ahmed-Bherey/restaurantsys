@@ -2,25 +2,24 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Support\Str;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
-use App\Models\ExpenseSection;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class ExpenseSectionController extends Controller
+class SupplierController extends Controller
 {
     //
     public function create()
     {
-        $expenseSections = ExpenseSection::get();
-        $code = $expenseSections->count() + 1;
-        return view('admin.pages.expenseSections.create', compact('expenseSections','code'));
+        $suppliers = Supplier::get();
+        $code = $suppliers->count() + 1;
+        return view('admin.pages.suppliers.create', compact('suppliers','code'));
     }
 
     public function store(Request $request)
     {
-        ExpenseSection::create([
+        Supplier::create([
             'user_id' => Auth::user()->id,
             'name' => $request->name,
             'code' => $request->code,
@@ -30,25 +29,25 @@ class ExpenseSectionController extends Controller
 
     public function edit($id)
     {
-        $expenseSection = ExpenseSection::findOrFail($id);
-        return view('admin.pages.expenseSections.edit', compact('expenseSection'));
+        $supplier = Supplier::findOrFail($id);
+        return view('admin.pages.suppliers.edit', compact('supplier'));
     }
 
     public function update(Request $request, $id)
     {
-        $expenseSection = ExpenseSection::findOrFail($id);
-        $expenseSection->update([
+        $supplier = Supplier::findOrFail($id);
+        $supplier->update([
             'user_id' => Auth::user()->id,
             'name' => $request->name,
             'code' => $request->code,
         ]);
-        return redirect()->route('expenseSection.create')->with(['success' => "تم التحديث بنجاح"]);
+        return redirect()->route('supplier.create')->with(['success' => "تم التحديث بنجاح"]);
     }
 
     public function destroy($id)
     {
-        $expenseSection = ExpenseSection::findOrFail($id);
-        $expenseSection->delete();
+        $supplier = Supplier::findOrFail($id);
+        $supplier->delete();
         return redirect()->back()->with(['success' => "تم الحذف بنجاح"]);
     }
 }
