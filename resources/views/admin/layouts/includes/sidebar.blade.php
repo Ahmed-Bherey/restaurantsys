@@ -81,6 +81,78 @@
                         <p>قائمة المنتجات</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('area.create')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon green-1"></i>
+                        <p>الطاولات</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="far fa-circle nav-icon green-1"></i>
+                        <p>
+                            المصروفات
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon green-1"></i>
+                                <p>الأقسام</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon green-1"></i>
+                                <p>الموردين</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon green-1"></i>
+                                <p>اضافة مصروف</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="far fa-circle nav-icon green-1"></i>
+                        <p>سجل العملاء</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="far fa-circle nav-icon green-1"></i>
+                        <p>مناطق التوصيل</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="far fa-circle nav-icon green-1"></i>
+                        <p>سيستم POS</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="far fa-circle nav-icon green-1"></i>
+                        <p>طاقم العمل</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="far fa-circle nav-icon green-1"></i>
+                        <p>المالية</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="far fa-circle nav-icon green-1"></i>
+                        <p>كوبونات</p>
+                    </a>
+                </li>
+
 
             </ul>
         </nav>

@@ -144,12 +144,12 @@
                                             </div>
                                             <div class="col-md-6 form-check text-right">
                                                 <label class="form-check-label ms-3" for="flexCheckChecked">
-                                                    شحن مجانى
+                                                    تعطيل الاتصال بالنادل
                                                 </label>
                                                 <input class="form-check-input" type="checkbox" id="flexCheckChecked"
                                                     value="1"
-                                                    @isset($activeManagement->free_delivery) @if ($activeManagement->free_delivery == 1) checked @endif @endisset
-                                                    name="free_delivery">
+                                                    @isset($activeManagement->disable_connection_to_waiter) @if ($activeManagement->disable_connection_to_waiter == 1) checked @endif @endisset
+                                                    name="disable_connection_to_waiter">
                                             </div>
                                             <div class="col-md-6 form-check text-right">
                                                 <label class="form-check-label ms-3" for="flexCheckChecked">
@@ -162,12 +162,12 @@
                                             </div>
                                             <div class="col-md-6 form-check text-right">
                                                 <label class="form-check-label ms-3" for="flexCheckChecked">
-                                                    تعطيل الاتصال بالنادل
+                                                    تناول الطلب فى المكان
                                                 </label>
                                                 <input class="form-check-input" type="checkbox" id="flexCheckChecked"
                                                     value="1"
-                                                    @isset($activeManagement->disable_connection_to_waiter) @if ($activeManagement->disable_connection_to_waiter == 1) checked @endif @endisset
-                                                    name="disable_connection_to_waiter">
+                                                    @isset($activeManagement->eat_on_spot) @if ($activeManagement->eat_on_spot == 1) checked @endif @endisset
+                                                    name="eat_on_spot">
                                             </div>
                                             <div class="col-md-6 form-check text-right">
                                                 <label class="form-check-label ms-3" for="flexCheckChecked">
@@ -180,12 +180,12 @@
                                             </div>
                                             <div class="col-md-6 form-check text-right">
                                                 <label class="form-check-label ms-3" for="flexCheckChecked">
-                                                    تناول الطلب فى المكان
+                                                    شحن مجانى
                                                 </label>
                                                 <input class="form-check-input" type="checkbox" id="flexCheckChecked"
                                                     value="1"
-                                                    @isset($activeManagement->eat_on_spot) @if ($activeManagement->eat_on_spot == 1) checked @endif @endisset
-                                                    name="eat_on_spot">
+                                                    @isset($activeManagement->free_delivery) @if ($activeManagement->free_delivery == 1) checked @endif @endisset
+                                                    name="free_delivery">
                                             </div>
                                         </div>
                                         <div class="col-md-3 flex-column">
@@ -280,8 +280,8 @@
                                         <div class="row">
                                             <div class="col-md-4 form-floating mb-3">
                                                 <input type="text" class="form-control" placeholder="اليوم"
-                                                    name="name" required>
-                                                <label for="store" class="col-form-label">اليوم</label>
+                                                    name="dayName" required>
+                                                <label for="dayName" class="col-form-label">اليوم</label>
                                             </div>
                                             <div class="col-md-4 form-floating mb-3">
                                                 <input type="time" class="form-control" placeholder="من"
@@ -309,7 +309,7 @@
                                         <div class="row">
                                             <div class="col-md-4 form-check text-right">
                                                 <label class="form-check-label ms-3" for="flexCheckChecked">
-                                                    {{ $WorkHour->name }}
+                                                    {{ $WorkHour->dayName }}
                                                 </label>
                                                 <input class="form-check-input" type="checkbox" id="flexCheckChecked"
                                                     checked>

@@ -9,8 +9,6 @@ let activeMangment = document.querySelector('.active_mangment'),
     addNewTime = document.querySelector('.add_new_time'),
     locationContent = document.querySelector('.location_content');
 
-    editCat.addEventListener('click')
-
 activeMangment.addEventListener('click', () => {
     activeMangmentContent.style.display = 'block';
     extrasContent.style.display = 'none';

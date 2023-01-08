@@ -15075,12 +15075,17 @@ html.maximized-card {
     overflow: hidden;
 }
 
-.card-header::after,
+
 .card-body::after,
 .card-footer::after {
     display: block;
     clear: both;
     content: "";
+}
+.card-header::after{
+    display: block;
+    clear: both;
+    /* content: ""; */
 }
 
 .card-header {

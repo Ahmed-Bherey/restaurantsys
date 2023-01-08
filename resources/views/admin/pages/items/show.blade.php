@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    @foreach (\App\Models\Item::where('category_id', $category->id)->paginate(8) as $item)
+                    @foreach (\App\Models\Item::where('category_id', $category->id)->latest()->paginate(8) as $item)
                         <div class="col-12 col-md-6 col-lg-4 col-xl-3 boxes">
                             <div class="box_content">
                                 <div class="item_box_img position-relative">
@@ -65,6 +65,7 @@
                             </div>
                         </div>
                     @endforeach
+                    {{ \App\Models\Item::where('category_id', $category->id)->latest()->paginate(8)->links() }}
                 </div>
             @endforeach
         </div>

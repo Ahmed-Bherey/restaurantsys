@@ -110,9 +110,10 @@ class GeneralSettingController extends Controller
 
     public function workHour(Request $request)
     {
+        // dd($request->all());
         WorkHour::create([
             'user_id' => Auth::user()->id,
-            'name' => $request->name,
+            'dayName' => $request->dayName,
             'from' => $request->from,
             'to' => $request->to,
         ]);
