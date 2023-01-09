@@ -85,6 +85,7 @@ header .btns{
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
+    box-shadow: 0px 1px 4px 1px grey;
 }
 .sections_info .products .cat_title{
     background-color: #ddd;
@@ -94,6 +95,11 @@ header .btns{
 .products .product_content .product_img img{
     max-width: 190px;
     max-height: 100px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
 }
 .products .product_content{
     padding: 10px;
@@ -105,6 +111,7 @@ header .btns{
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
 }
+
 /* --- End Designing Product Section --- */
 
 /* --- Start Designing Order Info Section --- */
@@ -112,6 +119,10 @@ header .btns{
     background-color: #ddd;
     font-size: 16px;
     padding: 7px 0;
+}
+.sections_info .order_info{
+    top: 0;
+    left: 0;
 }
 /* --- End Designing Order Info Section --- */
 /* -------------- End Designing Sections Info Section ----------- */

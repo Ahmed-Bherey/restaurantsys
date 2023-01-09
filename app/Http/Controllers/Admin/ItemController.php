@@ -45,7 +45,7 @@ class ItemController extends Controller
             'price' => $request->price,
             'active' => $active,
         ]);
-        return redirect()->back()->with(['success' => "تم الحفظ بنجاح"]);
+        return redirect()->route('items.show')->with(['success' => "تم الحفظ بنجاح"]);
     }
 
     public function edit($id)

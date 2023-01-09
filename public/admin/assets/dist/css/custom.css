@@ -77,6 +77,9 @@ table thead {
 .header-bg {
     background-color: #47bd96;
 }
+.header_title{
+    height: 55px;
+}
 
 .bg-origin {
     background-color: #47bd96;
@@ -861,8 +864,7 @@ textarea {
     -o-border-radius: 5px;
 }
 
-.create_category_form,
-.edit_cat_form {
+.create_category_form {
     top: 30%;
     left: 40%;
     transform: translate(-40%, -30%);
@@ -874,9 +876,9 @@ textarea {
     z-index: 9999;
     height: 0;
     padding-top: 0;
-    padding-left: 20px;
-    padding-right: 20px;
     padding-bottom: 0;
+    padding-right: 20px;
+    padding-left: 20px;
     overflow: hidden;
     border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -890,8 +892,7 @@ textarea {
     -o-transition: .7s ease-in-out;
 }
 
-.create_category_form.show,
-.edit_cat_form.show {
+.create_category_form.show {
     height: auto;
     padding-top: 20px;
     padding-bottom: 20px;

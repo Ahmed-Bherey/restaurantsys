@@ -129,10 +129,11 @@
                                                                 @endif
                                                             </td>
                                                             <td>
-                                                                <a href="#" type="submit"
-                                                                    class="btn bg-secondary"><i class="far fa-edit"
-                                                                        aria-hidden="true"></i></a>
-                                                                <a href="#" type="submit"
+                                                                <a href="{{ route('items.edit', $item->id) }}"
+                                                                    type="submit" class="btn bg-secondary"><i
+                                                                        class="far fa-edit" aria-hidden="true"></i></a>
+                                                                <a href="{{ route('items.destroy', $item->id) }}"
+                                                                    type="submit"
                                                                     onclick="return confirm('Are you sure?')"
                                                                     class="btn btn-danger"><i
                                                                         class="fas fa-trash-alt"></i></a>

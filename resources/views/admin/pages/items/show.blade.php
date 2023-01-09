@@ -71,7 +71,7 @@
         </div>
 
         <section class="create_category_form position-fixed">
-            <div class="card-header header-bg">
+            <div class="card-header header-bg header_title">
                 <h3 class="card-title header-title"><i class="fa-solid fa-briefcase"></i> اضافة قسم جديد</h3>
             </div>
             @include('admin.layouts.alerts.success')
@@ -97,30 +97,6 @@
             </form>
         </section>
 
-        <section class="edit_cat_form position-fixed">
-            <div class="card-header header-bg">
-                <h3 class="card-title header-title"><i class="fa-solid fa-briefcase"></i> تعديل القسم</h3>
-            </div>
-            <form action="" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="container">
-                    <div class="card-body">
-                        <div class="row mb-3">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" value="" id="name"
-                                    placeholder="اسم القسم" name="name">
-                                <label for="name" class="col-sm-4 col-form-label">اسم القسم
-                                </label>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn  bg-success"><i class="fa fa-check text-light"
-                                    aria-hidden="true"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </section>
     </div>
 
     <script>
