@@ -1,0 +1,124 @@
+/* -------------- Start Designing Default ----------- */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'myFont';
+}
+body{
+    background-color: #ddd;
+}
+@font-face {
+    font-family: 'myFont';
+    src: url('../../web/fonts/Cairo-VariableFont_slnt\,wght.ttf');
+}
+/* -------------- End Designing Default ----------- */
+
+/* -------------- Start Designing Header ----------- */
+header{
+    background-image: url(../img/background-banner.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    width: 100%;
+    height: 45vh;
+}
+header .header_msg{
+    position: absolute;
+    background-color: rgba(0, 0, 0, .7);
+    top: 75%;
+    right: 15%;
+    height: 40%;
+    width: 35%;
+    transform: translate(-15%,-80%);
+    -webkit-transform: translate(-15%,-80%);
+    -moz-transform: translate(-15%,-80%);
+    -ms-transform: translate(-15%,-80%);
+    -o-transform: translate(-15%,-80%);
+}
+header .header_msg .logo img{
+    height: 10vh;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+header .header_msg .msg_para{
+    color: white;
+}
+header .btns{
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    transform: translate(-10%,-10%);
+    -webkit-transform: translate(-10%,-10%);
+    -moz-transform: translate(-10%,-10%);
+    -ms-transform: translate(-10%,-10%);
+    -o-transform: translate(-10%,-10%);
+}
+/* -------------- End Designing Header ----------- */
+
+/* -------------- Start Designing Sections Section ----------- */
+.sections{
+    background-color: white;
+    padding: 20px 0;
+}
+.sections h4{
+    font-size: 21px;
+    cursor: pointer;
+}
+/* -------------- End Designing Sections Section ----------- */
+
+/* -------------- Start Designing Sections Info Section ----------- */
+.sections_info{
+    margin: 15px 0;
+}
+/* --- Start Designing Product Section --- */
+.sections_info .products .product_box,
+.sections_info .order_info  .order_box{
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.sections_info .products .cat_title{
+    background-color: #ddd;
+    font-size: 21px;
+    padding: 10px 0;
+}
+.products .product_content .product_img img{
+    max-width: 190px;
+    max-height: 100px;
+}
+.products .product_content{
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid gray;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+/* --- End Designing Product Section --- */
+
+/* --- Start Designing Order Info Section --- */
+.sections_info .order_info  .order_box .cat_title{
+    background-color: #ddd;
+    font-size: 16px;
+    padding: 7px 0;
+}
+/* --- End Designing Order Info Section --- */
+/* -------------- End Designing Sections Info Section ----------- */
+
+/* -------------- Start Designing footer ----------- */
+footer{
+    background-color: white;
+    padding: 20px 0;
+}
+/* -------------- End Designing footer ----------- */

@@ -123,7 +123,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{route('delivery.create')}}" class="nav-link">
                         <i class="far fa-circle nav-icon green-1"></i>
                         <p>مناطق التوصيل</p>
                     </a>
@@ -135,7 +135,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{route('team.create')}}" class="nav-link">
                         <i class="far fa-circle nav-icon green-1"></i>
                         <p>طاقم العمل</p>
                     </a>

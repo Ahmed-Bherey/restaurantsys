@@ -3,12 +3,14 @@
 use App\Http\Controllers\Admin\AreaController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DeliveryController;
 use App\Http\Controllers\Admin\ExpenseController;
 use App\Http\Controllers\Admin\ExpenseSectionController;
 use App\Http\Controllers\Admin\GeneralSettingController;
 use App\Http\Controllers\Admin\ItemController;
 use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\Admin\TableController;
+use App\Http\Controllers\Admin\TeamController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -79,5 +81,21 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('/{id}', 'edit')->name('expense.edit');
         Route::post('/{id}', 'update')->name('expense.update');
         Route::get('/destroy/{id}', 'destroy')->name('expense.destroy');
+    });
+    // فريق العمل
+    Route::prefix('teams')->controller(TeamController::class)->group(function () {
+        Route::get('/', 'create')->name('team.create');
+        Route::post('/', 'store')->name('team.store');
+        Route::get('/{id}', 'edit')->name('team.edit');
+        Route::post('/{id}', 'update')->name('team.update');
+        Route::get('/destroy/{id}', 'destroy')->name('team.destroy');
+    });
+    // مناطق التوصيل
+    Route::prefix('delivery')->controller(DeliveryController::class)->group(function () {
+        Route::get('/', 'create')->name('delivery.create');
+        Route::post('/', 'store')->name('delivery.store');
+        Route::get('/{id}', 'edit')->name('delivery.edit');
+        Route::post('/{id}', 'update')->name('delivery.update');
+        Route::get('/destroy/{id}', 'destroy')->name('delivery.destroy');
     });
 });

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Admin\LoginController;
 
 /*
@@ -20,3 +21,5 @@ Route::controller(LoginController::class)->group(function () {
     Route::post('login', 'login')->name('login');
     Route::get('logout', 'logout')->name('logout');
 });
+// الرئيسية
+Route::get('/', [HomeController::class, 'index'])->name('web.index');
