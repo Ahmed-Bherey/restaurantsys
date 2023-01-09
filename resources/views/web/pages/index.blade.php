@@ -1,14 +1,21 @@
 @extends('web.layouts.includes.master')
 @section('content')
     <section class="sections d-flex justify-content-around">
-        <h4>قائمة المنتجات</h4>
+        <div class="sections_links">
+            <h4>قائمة المنتجات</h4>
+            <div class="links mt-3">
+                @foreach ($categories as $key => $category)
+                    <a href="#{{ $category->name }}" class="text-decoration-none ms-3 fw-bold">{{ $category->name }}</a>
+                @endforeach
+            </div>
+        </div>
         <h4>معلومات التواصل</h4>
     </section>
     <section class="sections_info">
         <div class="container">
             <div class="row position-relative">
                 @foreach ($categories as $key => $category)
-                    <div class="col-12 col-lg-9 products mb-3">
+                    <div class="col-12 col-lg-9 products mb-3" id="{{ $category->name }}">
                         <div class="product_box">
                             <div class="cat_title text-center fw-bold">{{ $category->name }}</div>
                             <div class="row">

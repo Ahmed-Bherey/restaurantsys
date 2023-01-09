@@ -8,6 +8,7 @@
 body{
     background-color: #ddd;
 }
+
 @font-face {
     font-family: 'myFont';
     src: url('../../web/fonts/Cairo-VariableFont_slnt\,wght.ttf');
@@ -74,6 +75,14 @@ header .btns{
 /* -------------- Start Designing Sections Info Section ----------- */
 .sections_info{
     margin: 15px 0;
+}
+.sections .sections_links .links a{
+    color: black;
+}
+.sections .sections_links .links a:hover{
+    color: brown;
+    border-bottom: 1px solid brown;
+    padding-bottom: 5px;
 }
 /* --- Start Designing Product Section --- */
 .sections_info .products .product_box,
