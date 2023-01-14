@@ -18,6 +18,7 @@ class CartController extends Controller
 
     public function addToCart(Request $request)
     {
+        dd($request->desc);
         \Cart::add([
             'id' => $request->id,
             'name' => $request->name,
@@ -26,7 +27,8 @@ class CartController extends Controller
             'quantity' => $request->quantity,
             'attributes' => array(
                 'img' => $request->img,
-            )
+            ),
+            'desc' => $request->desc,
         ]);
         session()->flash('success', 'Product is Added to Cart Successfully !');
 

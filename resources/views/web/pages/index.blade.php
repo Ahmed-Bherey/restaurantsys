@@ -21,14 +21,14 @@
                             <div class="row">
                                 @foreach (\App\Models\Item::where('category_id', $category->id)->latest()->paginate(8) as $item)
                                     <div class="col-12 col-md-6">
-                                        <div class="product_content d-flex justify-content-between">
+                                        <div class="product_content test d-flex justify-content-between">
                                             <div class="product_info">
                                                 <div class="product_name fw-bold mb-2">{{ $item->name }}</div>
                                                 <div class="product_desc mb-2">{{ $item->desc }}</div>
                                                 <div class="product_price fw-bold mb-2 d-inline-block">{{ $item->price }}
                                                 </div>
                                                 <form action="{{ route('cart.store') }}" method="POST"
-                                                    enctype="multipart/form-data" class="d-inline-block">
+                                                    enctype="multipart/form-data" class="d-inline-block mb-3">
                                                     @csrf
                                                     <input type="hidden" value="{{ $item->id }}" name="id">
                                                     <input type="hidden" value="{{ $item->name }}" name="name">
@@ -36,14 +36,25 @@
                                                     <input type="hidden" value="{{ $item->price }}" name="price">
                                                     <input type="hidden" value="{{ $item->img }}" name="img">
                                                     <input type="hidden" value="1" name="quantity">
+                                                    <input type="hidden" value="{{ $item->desc }}" name="desc">
                                                     <button class="text-white" title="اضف الى السلة">
                                                         <i class="fa-solid fa-cart-plus"></i>
                                                     </button>
                                                 </form>
+                                                <div class="cursor-pointer detailes_show hide">
+                                                    <p style="cursor: pointer">عرض التفاصيل</p>
+                                                    <div class="extras mb-2">
+                                                        <div class="sizes">
+                                                            <span>كبير</span>
+                                                            <span>وسط</span>
+                                                            <span>صغير</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="product_img">
                                                 <img src="{{ asset('/public/' . Storage::url($item->img)) }}"
-                                                    class="own_img" alt="">
+                                                    alt="">
                                             </div>
                                         </div>
                                     </div>

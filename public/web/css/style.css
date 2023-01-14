@@ -129,6 +129,15 @@ header .btns {
     color: white;
     border: 1px solid black;
 }
+.sections_info .products .product_box .product_content .product_info .extras .sizes span{
+    background-color: #e93771;
+    color: white;
+    padding: 3px 5px;
+    border-radius: 10px;
+}
+.product_content .product_info .detailes_show.hide .extras{
+    display: none;
+}
 .sections_info .products .product_content button{
     width: 35px;
     height: 35px;
@@ -238,3 +247,11 @@ footer {
     border-radius: 7px;
     padding: 5px;
 }
+
+
+.product_content.test .own_img .hide{
+    display: none;
+}
+/* .own_img.show{
+    display: block;
+} */
