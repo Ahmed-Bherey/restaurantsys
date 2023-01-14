@@ -1,11 +1,12 @@
 /* -------------- Start Designing Default ----------- */
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'myFont';
 }
-body{
+
+body {
     background-color: #ddd;
 }
 
@@ -13,10 +14,11 @@ body{
     font-family: 'myFont';
     src: url('../../web/fonts/Cairo-VariableFont_slnt\,wght.ttf');
 }
+
 /* -------------- End Designing Default ----------- */
 
 /* -------------- Start Designing Header ----------- */
-header{
+header.main_header {
     background-image: url(../img/background-banner.jpg);
     background-position: center;
     background-size: cover;
@@ -25,20 +27,22 @@ header{
     width: 100%;
     height: 45vh;
 }
-header .header_msg{
+
+header .header_msg {
     position: absolute;
     background-color: rgba(0, 0, 0, .7);
     top: 75%;
     right: 15%;
     height: 40%;
     width: 35%;
-    transform: translate(-15%,-80%);
-    -webkit-transform: translate(-15%,-80%);
-    -moz-transform: translate(-15%,-80%);
-    -ms-transform: translate(-15%,-80%);
-    -o-transform: translate(-15%,-80%);
+    transform: translate(-15%, -80%);
+    -webkit-transform: translate(-15%, -80%);
+    -moz-transform: translate(-15%, -80%);
+    -ms-transform: translate(-15%, -80%);
+    -o-transform: translate(-15%, -80%);
 }
-header .header_msg .logo img{
+
+header .header_msg .logo img {
     height: 10vh;
     border-radius: 50%;
     -webkit-border-radius: 50%;
@@ -46,47 +50,55 @@ header .header_msg .logo img{
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
 }
-header .header_msg .msg_para{
+
+header .header_msg .msg_para {
     color: white;
 }
-header .btns{
+
+header .btns {
     position: absolute;
     top: 10%;
     left: 10%;
-    transform: translate(-10%,-10%);
-    -webkit-transform: translate(-10%,-10%);
-    -moz-transform: translate(-10%,-10%);
-    -ms-transform: translate(-10%,-10%);
-    -o-transform: translate(-10%,-10%);
+    transform: translate(-10%, -10%);
+    -webkit-transform: translate(-10%, -10%);
+    -moz-transform: translate(-10%, -10%);
+    -ms-transform: translate(-10%, -10%);
+    -o-transform: translate(-10%, -10%);
 }
+
 /* -------------- End Designing Header ----------- */
 
 /* -------------- Start Designing Sections Section ----------- */
-.sections{
+.sections {
     background-color: white;
     padding: 20px 0;
 }
-.sections h4{
+
+.sections h4 {
     font-size: 21px;
     cursor: pointer;
 }
+
 /* -------------- End Designing Sections Section ----------- */
 
 /* -------------- Start Designing Sections Info Section ----------- */
-.sections_info{
+.sections_info {
     margin: 15px 0;
 }
-.sections .sections_links .links a{
+
+.sections .sections_links .links a {
     color: black;
 }
-.sections .sections_links .links a:hover{
+
+.sections .sections_links .links a:hover {
     color: brown;
     border-bottom: 1px solid brown;
     padding-bottom: 5px;
 }
+
 /* --- Start Designing Product Section --- */
 .sections_info .products .product_box,
-.sections_info .order_info  .order_box{
+.sections_info .order_info .order_box {
     background-color: white;
     padding: 10px;
     border-radius: 5px;
@@ -96,12 +108,38 @@ header .btns{
     -o-border-radius: 5px;
     box-shadow: 0px 1px 4px 1px grey;
 }
-.sections_info .products .cat_title{
+
+.sections_info .products .cat_title {
     background-color: #ddd;
     font-size: 21px;
     padding: 10px 0;
 }
-.products .product_content .product_img img{
+.sections_info .order_info .order_items{
+    padding-bottom: 7px;
+    border-bottom: 1px solid rgb(121, 116, 116);
+}
+.sections_info .order_info .order_items .romove {
+    background-color: red;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    color: white;
+    border: 1px solid black;
+}
+.sections_info .products .product_content button{
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #198754;
+    margin: 0 10px;
+}
+
+.products .product_content .product_img img {
     max-width: 190px;
     max-height: 100px;
     border-radius: 5px;
@@ -110,7 +148,8 @@ header .btns{
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
 }
-.products .product_content{
+
+.products .product_content {
     padding: 10px;
     margin: 10px 0;
     border: 1px solid gray;
@@ -124,21 +163,78 @@ header .btns{
 /* --- End Designing Product Section --- */
 
 /* --- Start Designing Order Info Section --- */
-.sections_info .order_info  .order_box .cat_title{
+.sections_info .order_info .order_box .cat_title {
     background-color: #ddd;
     font-size: 16px;
     padding: 7px 0;
 }
-.sections_info .order_info{
+
+.sections_info .order_info {
     top: 0;
     left: 0;
 }
+
 /* --- End Designing Order Info Section --- */
 /* -------------- End Designing Sections Info Section ----------- */
 
 /* -------------- Start Designing footer ----------- */
-footer{
+footer {
     background-color: white;
     padding: 20px 0;
 }
+
 /* -------------- End Designing footer ----------- */
+
+.cart_header {
+    background-color: grey;
+    height: 20vh;
+    padding: 10px 0;
+}
+
+.cart_header .btns.position-absolute {
+    left: 10%;
+}
+
+.cart {
+    min-height: 70vh;
+}
+
+.cart h3 {
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+
+.cart .cart_list .cart_item_img img {
+    max-width: 190px;
+    max-height: 100px;
+}
+
+.cart .cart_list .cart_remove {
+    width: 40px;
+    max-height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.cart .cart_list .update_quanty {
+    border: none;
+    color: white;
+    padding: 5px;
+    background-color: #198754;
+    border-radius: 5px;
+}
+
+.cart .cart_list .remove_item {
+    border: none;
+    background-color: #d51212;
+    border-radius: 5px;
+}
+
+.cart .remove_all {
+    border: none;
+    background-color: #d51212;
+    color: white;
+    border-radius: 7px;
+    padding: 5px;
+}

@@ -13,3 +13,17 @@
         </a>
     </div>
 </footer>
+
+{{-- <script>
+    let addNewImg = document.querySelectorAll('.product_content'),
+    newImg = document.querySelectorAll('.new_img'),
+    ownImg = document.querySelectorAll('.own_img');
+
+    for (let i = 0; i < addNewImg.length; i++) {
+        addNewImg[i].addEventListener('click',()=>{
+            for (let index = 0; index < newImg.length; index++) {
+                newImg[index].innerHTML=`<img src="{{asset('public/web/img/logo.png')}}" alt="">`
+            }
+        })
+    }
+</script> --}}

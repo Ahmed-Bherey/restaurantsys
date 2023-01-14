@@ -12,6 +12,7 @@ class HomeController extends Controller
     public function index()
     {
         $categories = Category::get();
-        return view('web.pages.index', compact('categories'));
+        $cartItems = \Cart::getContent();
+        return view('web.pages.index', compact('categories','cartItems'));
     }
 }
