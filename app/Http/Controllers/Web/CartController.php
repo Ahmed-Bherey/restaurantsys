@@ -18,17 +18,15 @@ class CartController extends Controller
 
     public function addToCart(Request $request)
     {
-        dd($request->desc);
         \Cart::add([
             'id' => $request->id,
             'name' => $request->name,
-            'desc' => $request->desc,
+            'desc' => 'iuwh',
             'price' => $request->price,
             'quantity' => $request->quantity,
             'attributes' => array(
                 'img' => $request->img,
             ),
-            'desc' => $request->desc,
         ]);
         session()->flash('success', 'Product is Added to Cart Successfully !');
 
@@ -49,7 +47,7 @@ class CartController extends Controller
 
         session()->flash('success', 'Item Cart is Updated Successfully !');
 
-        return redirect()->route('cart.list');
+        return redirect()->back();
     }
 
     public function removeCart(Request $request)

@@ -22,7 +22,6 @@
                                         class="w-20 rounded" alt="Thumbnail">
                                 </th>
                                 <td>{{ $item->name }}</td>
-                                <td>{{ $item->desc }}</td>
                                 <td class="d-flex">
                                     <form action="{{ route('cart.update') }}" method="POST">
                                         @csrf

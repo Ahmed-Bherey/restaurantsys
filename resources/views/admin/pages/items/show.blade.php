@@ -55,7 +55,7 @@
                                 <div class="item_box_content">
                                     <div class="title mb-2">{{ $item->name }}</div>
                                     <div class="desc mb-2">{{ $item->desc }}</div>
-                                    <div class="price mb-2">{{ $item->price }} جـ</div>
+                                    <div class="price mb-2">{{ number_format($item->price, 2) }} جـ</div>
                                     @if ($item->active == 1)
                                         <p class="text-success fw-bold mb-2">متوفر</p>
                                     @else

@@ -742,7 +742,9 @@ textarea {
 
 .item_box .boxes .box_content .item_box_img img {
     max-width: 100%;
+    min-width: 229px;
     min-height: 170px;
+    max-height: 170px;
     border-radius: 5px 5px 0 0;
     -webkit-border-radius: 5px 5px 0 0;
     -moz-border-radius: 5px 5px 0 0;
@@ -753,6 +755,7 @@ textarea {
 .item_box .boxes .box_content .item_box_content {
     background-color: white;
     padding: 7px;
+    min-height: 165px;
 }
 
 .item_box .boxes .box_content .item_box_img {
