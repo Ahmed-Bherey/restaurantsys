@@ -1,4 +1,25 @@
 </main>
+<section class="waiter">
+    <div class="container">
+        <h3 class="title text-center">طلب جرسون</h3>
+        <div class="btn btn-dark mb-2">الطاولة</div>
+        <form action="#" method="#">
+            @csrf
+            <select required class="form-select mb-3">
+                <option value="">اختر الطاولة</option>
+                @foreach ($tables as $table)
+                    <option value="{{ $table->id }}">{{ $table->areas->name }} - {{ $table->name }}</option>
+                @endforeach
+            </select>
+        </form>
+    </div>
+    <div class="text-center">
+        <a href="#" class="btn btn-primary mb-2">اتصل الان</a>
+    </div>
+</section>
+
+
+
 <footer class="d-flex justify-content-around">
     <div class="copyright">جميع الحقوق محفوظة &copy;
         <a href="https://api.whatsapp.com/send?phone=@isset($generalSetting->tel1) {{ $generalSetting->tel1 }} @endisset"

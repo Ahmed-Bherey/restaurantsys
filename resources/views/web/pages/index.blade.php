@@ -21,7 +21,7 @@
                             <div class="row">
                                 @foreach (\App\Models\Item::where('category_id', $category->id)->latest()->paginate(8) as $item)
                                     <div class="col-12 col-md-6">
-                                        <div class="product_content test d-flex justify-content-between">
+                                        <div class="product_content hide_model test d-flex justify-content-between">
                                             <div class="product_info">
                                                 <div class="product_name fw-bold mb-2">{{ $item->name }}</div>
                                                 <div class="product_desc mb-2">{{ $item->desc }}</div>
@@ -40,20 +40,70 @@
                                                         <i class="fa-solid fa-cart-plus"></i>
                                                     </button>
                                                 </form>
-                                                {{-- <div class="cursor-pointer detailes_show hide">
-                                                    <p style="cursor: pointer">عرض التفاصيل</p>
-                                                    <div class="extras mb-2">
-                                                        <div class="sizes">
-                                                            <span>كبير</span>
-                                                            <span>وسط</span>
-                                                            <span>صغير</span>
-                                                        </div>
-                                                    </div>
-                                                </div> --}}
                                             </div>
                                             <div class="product_img">
                                                 <img src="{{ asset('/public/' . Storage::url($item->img)) }}"
                                                     alt="">
+                                            </div>
+
+                                            <div class="product_model">
+                                                <div class="title d-flex justify-content-between">
+                                                    <h4>أضف الى الطلبات</h4>
+                                                    <div class="icon">
+                                                        <i class="fa-solid fa-xmark"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="product_model_img text-center">
+                                                    <img src="{{ asset('/public/' . Storage::url($item->img)) }}"
+                                                        alt="">
+                                                </div>
+                                                <h5 class="item_name mb-3 fw-bold">{{ $item->name }}</h5>
+                                                <p class="item_desc mb-3">{{ $item->desc }}</p>
+                                                <form action="#" method="#">
+                                                    @csrf
+                                                    <input type="hidden" value="{{ $item->img }}" name="img">
+                                                    <input type="hidden" value="{{ $item->name }}" name="name">
+                                                    <input type="hidden" value="{{ $item->desc }}" name="desc">
+                                                    <input type="hidden" value="{{ $item->price }}" name="price">
+                                                    <div class="extras">
+                                                        <p class="btn btn-light mb-2 quantity">الاضافات</p>
+                                                        <div class="radios d-flex justify-content-between mx-3">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    value="" id="flexCheckDefault">
+                                                                <label class="form-check-label" for="flexCheckDefault">
+                                                                    جبنة اضافية
+                                                                </label>
+                                                            </div>
+                                                            <p class="price">10.00 جـ</p>
+                                                        </div>
+                                                        <div class="radios d-flex justify-content-between mx-3">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    value="" id="flexCheckDefault">
+                                                                <label class="form-check-label" for="flexCheckDefault">
+                                                                    جبنة اضافية
+                                                                </label>
+                                                            </div>
+                                                            <p class="price">10.00 جـ</p>
+                                                        </div>
+                                                        <div class="radios d-flex justify-content-between mx-3">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    value="" id="flexCheckDefault">
+                                                                <label class="form-check-label" for="flexCheckDefault">
+                                                                    جبنة اضافية
+                                                                </label>
+                                                            </div>
+                                                            <p class="price">10.00 جـ</p>
+                                                        </div>
+                                                    </div>
+                                                    <p class="btn btn-light mb-2 quantity">الكمية</p>
+                                                    <input type="number" name="quantity" value="1"
+                                                        class="w-100 mb-2 px-2">
+                                                        <div class="total_price">11.00 جـ</div>
+                                                    <button type="submit" class="btn btn-primary w-100 my-2">أضف الى الطلبات</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -81,7 +131,8 @@
                                                         @csrf
                                                         <button type="submit" class="submit_confirm"><i
                                                                 class="fa-solid fa-check"></i></button>
-                                                        <input type="hidden" name="id" value="{{ $cartItem->id }}">
+                                                        <input type="hidden" name="id"
+                                                            value="{{ $cartItem->id }}">
                                                         <input type="number" name="quantity"
                                                             value="{{ $cartItem->quantity }}" style="width: 30%" />
                                                     </form>

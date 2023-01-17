@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use Cart;
+use App\Models\Table;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -12,7 +13,8 @@ class CartController extends Controller
     {
         $cartItems = \Cart::getContent();
         // dd($cartItems);
-        return view('web.pages.cart', compact('cartItems'));
+        $tables = Table::get();
+        return view('web.pages.cart', compact('cartItems','tables'));
     }
 
 

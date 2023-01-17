@@ -1,11 +1,11 @@
-<header class="main_header">
+<header class="main_header position-relative">
     <div class="btns">
         <a href="{{ route('cart.list') }}" class="btn btn-danger fw-bold">
             ({{ Cart::getTotalQuantity()}})
             <i class="fa-solid fa-cart-shopping"></i>
         </a>
         <a href="#" class="btn btn-danger fw-bold">شاركنا رأيك</a>
-        <a href="#" class="btn btn-danger fw-bold">طلب الجرسون</a>
+        <a href="#" class="btn btn-danger fw-bold waiter_request">طلب الجرسون</a>
     </div>
     <div class="header_msg d-flex align-items-center">
         <div class="logo mx-3">
@@ -17,4 +17,5 @@
         </div>
     </div>
 </header>
+<div class="overflew position-fixed"></div>
 <main>

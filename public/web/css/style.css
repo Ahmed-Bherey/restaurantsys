@@ -10,11 +10,30 @@ body {
     background-color: #ddd;
 }
 
+.overflew {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+    transition: .7s ease-in-out;
+    -webkit-transition: .7s ease-in-out;
+    -moz-transition: .7s ease-in-out;
+    -ms-transition: .7s ease-in-out;
+    -o-transition: .7s ease-in-out;
+}
+
 @font-face {
     font-family: 'myFont';
     src: url('../../web/fonts/Cairo-VariableFont_slnt\,wght.ttf');
 }
 
+@font-face {
+    font-family: 'waiter';
+    src: url('../../web/fonts/Lalezar-Regular.ttf');
+}
 /* -------------- End Designing Default ----------- */
 
 /* -------------- Start Designing Header ----------- */
@@ -115,35 +134,7 @@ header .btns {
     padding: 10px 0;
 }
 
-.sections_info .order_info .order_items {
-    padding-bottom: 7px;
-    border-bottom: 1px solid rgb(121, 116, 116);
-}
-
-.sections_info .order_info .order_items .romove {
-    background-color: red;
-    width: 25px;
-    height: 25px;
-    line-height: 25px;
-    text-align: center;
-    border-radius: 50%;
-    cursor: pointer;
-    color: white;
-    border: 1px solid black;
-}
-
-.sections_info .products .product_box .product_content .product_info .extras .sizes span {
-    background-color: #e93771;
-    color: white;
-    padding: 3px 5px;
-    border-radius: 10px;
-}
-
-.product_content .product_info .detailes_show.hide .extras {
-    display: none;
-}
-
-.sections_info .products .product_content button {
+.sections_info .products .product_content button.text-white {
     width: 35px;
     height: 35px;
     line-height: 35px;
@@ -183,6 +174,23 @@ header .btns {
     padding: 7px 0;
 }
 
+.sections_info .order_info .order_items {
+    padding-bottom: 7px;
+    border-bottom: 1px solid rgb(121, 116, 116);
+}
+
+.sections_info .order_info .order_items .romove {
+    background-color: red;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    color: white;
+    border: 1px solid black;
+}
+
 .sections_info .order_info {
     top: 0;
     left: 0;
@@ -196,21 +204,16 @@ header .btns {
     height: 30px;
     border-radius: 15px;
 }
-.sections_info .order_info .order_box .order_items .submit_confirm:hover{
+
+.sections_info .order_info .order_box .order_items .submit_confirm:hover {
     background-color: #126941;
 }
 
 /* --- End Designing Order Info Section --- */
+
 /* -------------- End Designing Sections Info Section ----------- */
 
-/* -------------- Start Designing footer ----------- */
-footer {
-    background-color: white;
-    padding: 20px 0;
-}
-
-/* -------------- End Designing footer ----------- */
-
+/* -------------- Start Designing Cart Section ----------- */
 .cart_header {
     background-color: grey;
     height: 20vh;
@@ -265,11 +268,101 @@ footer {
     padding: 5px;
 }
 
+/* -------------- End Designing Cart Section ----------- */
+
+/* -------------- Start Designing Waiter Section ----------- */
+.waiter {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background-color: rgb(59, 156, 91);
+    padding: 10px;
+    width: 30%;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    display: none;
+}
+
+.waiter .title {
+    border-bottom: 1px solid rgb(51, 50, 50);
+    padding-bottom: 10px;
+    font-family: 'waiter';
+}
+
+/* -------------- End Designing Waiter Section ----------- */
+
+/* -------------- Start Designing footer ----------- */
+footer {
+    background-color: white;
+    padding: 20px 0;
+}
+
+/* -------------- End Designing footer ----------- */
+
 
 .product_content.test .own_img .hide {
     display: none;
 }
 
-/* .own_img.show{
-    display: block;
-} */
+
+.product_model{
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    width: 30%;
+    max-height: 90vh;
+    z-index: 9999;
+    padding: 10px;
+    overflow-x: scroll;
+    background-color: #ffffff;
+    border-radius: 5px;
+    transform: translate(-50%,-20%);
+    -webkit-transform: translate(-50%,-20%);
+    -moz-transform: translate(-50%,-20%);
+    -ms-transform: translate(-50%,-20%);
+    -o-transform: translate(-50%,-20%);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.product_content.hide_model .product_model{
+    display: none;
+}
+.sections_info .products .product_box .product_model .title{
+    background-color: rgb(189, 186, 186);
+    padding: 7px;
+}
+.sections_info .products .product_box .product_model .title h4{
+    font-family: 'waiter';
+}
+.sections_info .products .product_box .product_model .product_model_img img{
+    max-width: 100%;
+    max-height: 220px;
+    margin: 5px 0;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+}
+.product_content .product_model p.quantity{
+    background-color: #d3d4d5;
+}
+.product_content .product_model .total_price{
+    background-color: #313185;
+    text-align: center;
+    color: white;
+    padding: 3px 0;
+    border-radius: 5px;
+    margin: 5px 0;
+}
