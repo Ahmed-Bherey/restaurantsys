@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ExpenseSectionController;
 use App\Http\Controllers\Admin\GeneralSettingController;
 use App\Http\Controllers\Admin\ItemController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\OrderHiddenController;
 use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\Admin\TableController;
 use App\Http\Controllers\Admin\TeamController;
@@ -99,9 +100,17 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::post('/{id}', 'update')->name('delivery.update');
         Route::get('/destroy/{id}', 'destroy')->name('delivery.destroy');
     });
-    // الطلبات
-    Route::prefix('order')->controller(OrderController::class)->middleware('client')->group(function () {
-        Route::post('order', 'store')->name('order.store');
-        Route::get('/destroy/{id}', 'destroy')->name('order.destroy');
+    Route::middleware('client')->group(function () {
+        // الطلبات المخفية
+        Route::middleware('client')->prefix('orderHidden')->controller(OrderHiddenController::class)->group(function () {
+            Route::post('orderHidden', 'store')->name('orderHidden.store');
+            Route::get('/destroy/{id}', 'destroy')->name('orderHidden.destroy');
+        });
+        // الطلبات
+        Route::prefix('order')->controller(OrderController::class)->group(function () {
+            Route::post('/', 'store')->name('order.store');
+            Route::post('/{id}', 'update')->name('order.update');
+            Route::get('/destroy/{id}', 'destroy')->name('order.destroy');
+        });
     });
 });

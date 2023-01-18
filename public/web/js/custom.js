@@ -24,4 +24,24 @@ $(document).ready(function(){
         $('.product_content').addClass('hide_model');
         $('.overflew').css('display','none');
     });
+
+    $('.plus_para').click(function(){
+        console.log($('#quantity').val())
+    });
+
+    $('.receive_way_opts').change(function(){
+        if($('.receive_way_opts').val() == 1){
+            $('.in_rest').css('display','block')
+            $('.from_rest').css('display','none')
+            $('.delivery_rest').css('display','none')
+        }else if($('.receive_way_opts').val() == 2){
+            $('.in_rest').css('display','none')
+            $('.from_rest').css('display','block')
+            $('.delivery_rest').css('display','none')
+        }else{
+            $('.in_rest').css('display','none')
+            $('.from_rest').css('display','none')
+            $('.delivery_rest').css('display','block')
+        }
+    });
 });

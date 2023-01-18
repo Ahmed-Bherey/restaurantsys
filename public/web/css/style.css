@@ -196,19 +196,6 @@ header .btns {
     left: 0;
 }
 
-.sections_info .order_info .order_box .order_items .submit_confirm {
-    border: none;
-    width: 30px;
-    background-color: #198754;
-    color: white;
-    height: 30px;
-    border-radius: 15px;
-}
-
-.sections_info .order_info .order_box .order_items .submit_confirm:hover {
-    background-color: #126941;
-}
-
 /* --- End Designing Order Info Section --- */
 
 /* -------------- End Designing Sections Info Section ----------- */
@@ -300,6 +287,40 @@ header .btns {
 
 /* -------------- End Designing Waiter Section ----------- */
 
+/* -------------- Start Designing Order Page ----------- */
+.orders_page .order_items .title{
+    font-size: 20px;
+    margin: 10px 0;
+}
+.orders_page .order_items .order_items_box .order_items_box_content{
+    background-color: white;
+    width: fit-content;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+}
+.orders_page .order_items .order_items_box .order_items_box_content .order_items_box_img img{
+    max-width: 250px;
+    min-width: 250px;
+    min-height: 140px;
+    max-height: 140px;
+    border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    -ms-border-radius: 5px 5px 0 0;
+    -o-border-radius: 5px 5px 0 0;
+}
+.orders_page .order_items .order_items_box .order_items_box_content .order_items_box_info{
+    padding: 10px;
+}
+.orders_page .from_rest,
+.orders_page .delivery_rest{
+    display: none;
+}
+/* -------------- End Designing Order Page ----------- */
+
 /* -------------- Start Designing footer ----------- */
 footer {
     background-color: white;
@@ -314,6 +335,10 @@ footer {
 }
 
 
+
+/* -------------- Start Designing Model ----------- */
+
+/* ----- Start Designing Product Model ----- */
 .product_model{
     position: fixed;
     top: 20%;
@@ -366,3 +391,5 @@ footer {
     border-radius: 5px;
     margin: 5px 0;
 }
+/* ----- End Designing Product Model ----- */
+/* -------------- End Designing Model ----------- */

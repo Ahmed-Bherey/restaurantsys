@@ -33,6 +33,15 @@ Route::controller(ClientController::class)->prefix('web')->group(function () {
 });
 // الرئيسية
 Route::get('/', [HomeController::class, 'index'])->name('web.index');
+// تأكيد الطلب
+Route::get('/order', [HomeController::class, 'order'])->name('web.order');
+
+
+
+
+
+
+
 
 
 // Route::get('/', [ProductController::class, 'productList'])->name('products.list');

@@ -15,15 +15,17 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('client_id')->nullable();
-            $table->unsignedBigInteger('item_id')->nullable();
-            $table->string('img')->nullable();
-            $table->string('name')->nullable();
-            $table->float('price')->nullable();
-            $table->longText('desc')->nullable();
-            $table->integer('quantity')->nullable();
+            $table->unsignedBigInteger('orderHidden_id')->nullable();
+            $table->unsignedBigInteger('table_id')->nullable();
+            $table->unsignedBigInteger('delivery_id')->nullable();
+            $table->integer('receive_way')->nullable();
+            $table->string('receive_time')->nullable();
+            $table->string('tel')->nullable();
+            $table->string('address')->nullable();
+            $table->longText('notes')->nullable();
             $table->timestamps();
-            $table->foreign('item_id')->references('id')->on('items')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
