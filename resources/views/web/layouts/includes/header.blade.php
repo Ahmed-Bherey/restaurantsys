@@ -6,6 +6,11 @@
         </a>
         <a href="#" class="btn btn-danger fw-bold">شاركنا رأيك</a>
         <a href="#" class="btn btn-danger fw-bold waiter_request">طلب الجرسون</a>
+        @if(auth()->guard('client')->check())
+        <a href="{{route('client.logout')}}" class="btn btn-danger fw-bold">تسجيل الخروج</a>
+        @else
+        <a href="{{route('client.login.form')}}" class="btn btn-danger fw-bold">تسجيل الدخول</a>
+        @endif
     </div>
     <div class="header_msg d-flex align-items-center">
         <div class="logo mx-3">

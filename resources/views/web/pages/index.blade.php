@@ -1,5 +1,7 @@
 @extends('web.layouts.includes.master')
 @section('content')
+    @include('admin.layouts.alerts.success')
+    @include('admin.layouts.alerts.error')
     <section class="sections d-flex justify-content-around">
         <div class="sections_links">
             <h4>قائمة المنتجات</h4>
@@ -28,7 +30,7 @@
                                                 <div class="product_price fw-bold mb-2 d-inline-block">
                                                     {{ number_format($item->price, 2) }} جـ
                                                 </div>
-                                                <form action="{{ route('cart.store') }}" method="POST"
+                                                {{-- <form action="{{ route('cart.store') }}" method="POST"
                                                     enctype="multipart/form-data" class="d-inline-block mb-3">
                                                     @csrf
                                                     <input type="hidden" value="{{ $item->id }}" name="id">
@@ -39,7 +41,7 @@
                                                     <button class="text-white" title="اضف الى السلة">
                                                         <i class="fa-solid fa-cart-plus"></i>
                                                     </button>
-                                                </form>
+                                                </form> --}}
                                             </div>
                                             <div class="product_img">
                                                 <img src="{{ asset('/public/' . Storage::url($item->img)) }}"
@@ -59,8 +61,9 @@
                                                 </div>
                                                 <h5 class="item_name mb-3 fw-bold">{{ $item->name }}</h5>
                                                 <p class="item_desc mb-3">{{ $item->desc }}</p>
-                                                <form action="#" method="#">
+                                                <form action="{{ route('order.store') }}" method="POST">
                                                     @csrf
+                                                    <input type="hidden" value="{{ $item->id }}" name="item_id">
                                                     <input type="hidden" value="{{ $item->img }}" name="img">
                                                     <input type="hidden" value="{{ $item->name }}" name="name">
                                                     <input type="hidden" value="{{ $item->desc }}" name="desc">
@@ -101,8 +104,9 @@
                                                     <p class="btn btn-light mb-2 quantity">الكمية</p>
                                                     <input type="number" name="quantity" value="1"
                                                         class="w-100 mb-2 px-2">
-                                                        <div class="total_price">11.00 جـ</div>
-                                                    <button type="submit" class="btn btn-primary w-100 my-2">أضف الى الطلبات</button>
+                                                    <div class="total_price">11.00 جـ</div>
+                                                    <button type="submit" class="btn btn-primary w-100 my-2">أضف الى
+                                                        الطلبات</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -113,59 +117,55 @@
                         </div>
                     </div>
                 @endforeach
-                <div class="col-12 col-lg-3 order_info mb-3 position-absolute">
-                    <div class="order_box">
-                        <div class="cat_title text-center">
-                            <p class="fw-bold">طلباتى</p>
-                            <p>الحد الأدنى للطلبات 10.00 جـ</p>
-                        </div>
-                        @if ($cartItems->count() != 0)
-                            @foreach ($cartItems as $cartItem)
-                                <div class="order_items my-3 px-3">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="countName d-flex">
-                                            <div class="d-flex flex-column">
-                                                <div class="name">{{ $cartItem->name }}</div>
-                                                <div class="count">
-                                                    <form action="{{ route('cart.update') }}" method="POST">
-                                                        @csrf
-                                                        <button type="submit" class="submit_confirm"><i
-                                                                class="fa-solid fa-check"></i></button>
-                                                        <input type="hidden" name="id"
-                                                            value="{{ $cartItem->id }}">
-                                                        <input type="number" name="quantity"
-                                                            value="{{ $cartItem->quantity }}" style="width: 30%" />
-                                                    </form>
+                    <div class="col-12 col-lg-3 order_info mb-3 position-absolute">
+                        <div class="order_box">
+                            <div class="cat_title text-center">
+                                <p class="fw-bold">طلباتى</p>
+                                <p>الحد الأدنى للطلبات 10.00 جـ</p>
+                            </div>
+                            @if (auth()->guard('client')->check() && $orders->count() != 0)
+                                @foreach ($orders as $order)
+                                    <div class="order_items my-3 px-3">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="countName d-flex">
+                                                <div class="d-flex flex-column">
+                                                    <div class="name">{{ $order->name }}</div>
+                                                    <div class="count">
+                                                        <form action="{{ route('cart.update') }}" method="POST">
+                                                            @csrf
+                                                            <button type="submit" class="submit_confirm"><i
+                                                                    class="fa-solid fa-check"></i></button>
+                                                            <input type="hidden" name="id" value="#">
+                                                            <input type="number" name="quantity" value="#"
+                                                                style="width: 30%" />
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <div class="price ms-2">{{ number_format($order->price, 2) }}</div>
+                                            <a href="{{ route('order.destroy', $order->id) }}" class="romove"><i
+                                                    class="fa-solid fa-xmark"></i></a>
                                         </div>
-                                        <div class="price">{{ number_format($cartItem->price, 2) }}</div>
-                                        <form action="{{ route('cart.remove') }}" method="POST">
+                                    </div>
+                                @endforeach
+                                <div>
+                                    الاجمالى: {{ $orders->sum('price') }} جـ
+                                </div>
+                                <div>
+                                    <div class="d-flex justify-content-center mt-3">
+                                        <a href="#" class="btn btn-success ms-2">تأكيد الطلب</a>
+                                        <form action="{{ route('cart.clear') }}" method="POST">
                                             @csrf
-                                            <input type="hidden" value="{{ $cartItem->id }}" name="id">
-                                            <button type="submit" class="romove me-3"><i
-                                                    class="fa-solid fa-xmark"></i></button>
+                                            <button class="btn btn-danger">حذف الكل</button>
                                         </form>
                                     </div>
                                 </div>
-                            @endforeach
-                            <div>
-                                الاجمالى: {{ Cart::getTotal() }} جـ
-                            </div>
-                            <div>
-                                <div class="d-flex justify-content-center mt-3">
-                                    <a href="#" class="btn btn-success ms-2">تأكيد الطلب</a>
-                                    <form action="{{ route('cart.clear') }}" method="POST">
-                                        @csrf
-                                        <button class="btn btn-danger">حذف الكل</button>
-                                    </form>
-                                </div>
-                            </div>
-                        @else
-                            <div class="order_box_info text-center my-3">لا يوجد اى طلبات</div>
-                        @endif
+                            @else
+                                <div class="order_box_info text-center my-3">لا يوجد اى طلبات</div>
+                            @endif
+                        </div>
                     </div>
-                </div>
+
             </div>
         </div>
     </section>

@@ -16,6 +16,5 @@ class Client extends Authenticatable
         'password',
         'address',
         'tel',
-        'active',
     ];
 }

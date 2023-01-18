@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
+            $table->string('username')->nullable();
+            $table->string('email')->nullable();
+            $table->string('password')->nullable();
+            $table->string('address')->nullable();
+            $table->string('tel')->nullable();
             $table->timestamps();
         });
     }

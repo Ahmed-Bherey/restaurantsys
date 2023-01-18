@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ExpenseController;
 use App\Http\Controllers\Admin\ExpenseSectionController;
 use App\Http\Controllers\Admin\GeneralSettingController;
 use App\Http\Controllers\Admin\ItemController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\Admin\TableController;
 use App\Http\Controllers\Admin\TeamController;
@@ -97,5 +98,10 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('/{id}', 'edit')->name('delivery.edit');
         Route::post('/{id}', 'update')->name('delivery.update');
         Route::get('/destroy/{id}', 'destroy')->name('delivery.destroy');
+    });
+    // الطلبات
+    Route::prefix('order')->controller(OrderController::class)->middleware('client')->group(function () {
+        Route::post('order', 'store')->name('order.store');
+        Route::get('/destroy/{id}', 'destroy')->name('order.destroy');
     });
 });

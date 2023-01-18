@@ -16,8 +16,8 @@ class Client
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->guard('client')->check() == false){
-            return redirect()->route('client.register.form');
+        if (auth()->guard('client')->check() == false) {
+            return redirect()->route('client.login.form')->with(['success' => "من فضلك قم بتسجيل الدخول اولا"]);;
         }
         return $next($request);
     }

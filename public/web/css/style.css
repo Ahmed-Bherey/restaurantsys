@@ -181,9 +181,9 @@ header .btns {
 
 .sections_info .order_info .order_items .romove {
     background-color: red;
-    width: 25px;
-    height: 25px;
-    line-height: 25px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
     text-align: center;
     border-radius: 50%;
     cursor: pointer;

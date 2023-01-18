@@ -24,7 +24,7 @@ Route::controller(LoginController::class)->group(function () {
     Route::get('logout', 'logout')->name('logout');
 });
 // login & logout Client
-Route::controller(ClientController::class)->group(function () {
+Route::controller(ClientController::class)->prefix('web')->group(function () {
     Route::get('login', 'loginForm')->name('client.login.form');
     Route::post('login', 'login')->name('client.login');
     Route::get('register', 'registerForm')->name('client.register.form');

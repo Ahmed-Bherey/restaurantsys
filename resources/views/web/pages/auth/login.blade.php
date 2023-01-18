@@ -21,37 +21,21 @@
 
 <body>
     <div class="limiter">
+        @include('admin.layouts.alerts.success')
+        @include('admin.layouts.alerts.error')
         <div class="container-login100">
             <div class="wrap-login100">
                 @include('admin.layouts.alerts.success')
                 @include('admin.layouts.alerts.error')
-                <form action="{{ route('client.register') }}" method="post" class="login100-form validate-form">
+                <form action="{{ route('client.login') }}" method="post" class="login100-form validate-form">
                     @csrf
                     <span class="login100-form-title p-b-26">
-                        انشاء حساب
+                        تسجيل الدخول
                     </span>
-                    {{-- <span class="login100-form-title p-b-48">
-                        <i class="zmdi zmdi-font"></i>
-                    </span> --}}
-
-                    <div class="wrap-input100 validate-input">
-                        <input class="input100" type="text" name="username">
-                        <span class="focus-input100" data-placeholder="اسم المستخدم"></span>
-                    </div>
 
                     <div class="wrap-input100 validate-input">
                         <input class="input100" type="email" name="email">
                         <span class="focus-input100" data-placeholder="البريد الالكترونى"></span>
-                    </div>
-
-                    <div class="wrap-input100 validate-input">
-                        <input class="input100" type="text" name="address">
-                        <span class="focus-input100" data-placeholder="العنوان"></span>
-                    </div>
-
-                    <div class="wrap-input100 validate-input">
-                        <input class="input100" type="tel" name="tel">
-                        <span class="focus-input100" data-placeholder="الهاتف"></span>
                     </div>
 
                     <div class="wrap-input100 validate-input">
@@ -66,17 +50,17 @@
                         <div class="wrap-login100-form-btn">
                             <div class="login100-form-bgbtn"></div>
                             <button class="login100-form-btn">
-                                انشاء حساب
+                                Login
                             </button>
                         </div>
                     </div>
                     <div class="text-center p-t-115">
                         <span class="txt1">
-                            لديك حساب بالفعل؟
+                            ليس لديك حساب؟
                         </span>
 
-                        <a class="txt2" href="{{ route('client.login.form') }}">
-                            تسجيل الدخول
+                        <a class="txt2" href="{{ route('client.register.form') }}">
+                            انشاء حساب
                         </a>
                     </div>
                 </form>
