@@ -31,10 +31,13 @@ Route::controller(ClientController::class)->prefix('web')->group(function () {
     Route::post('register', 'register')->name('client.register');
     Route::get('logout', 'logout')->name('client.logout');
 });
-// الرئيسية
-Route::get('/', [HomeController::class, 'index'])->name('web.index');
-// تأكيد الطلب
-Route::get('/order', [HomeController::class, 'order'])->name('web.order');
+
+Route::controller(HomeController::class)->group(function () {
+    // الرئيسية
+    Route::get('/', 'index')->name('web.index');
+    // تأكيد الطلب
+    Route::get('/order', 'order')->name('web.order')->middleware('checkOrder');
+});
 
 
 

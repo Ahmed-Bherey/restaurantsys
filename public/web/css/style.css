@@ -288,6 +288,9 @@ header .btns {
 /* -------------- End Designing Waiter Section ----------- */
 
 /* -------------- Start Designing Order Page ----------- */
+.orders_page{
+    min-height: 68vh;
+}
 .orders_page .order_items .title{
     font-size: 20px;
     margin: 10px 0;
