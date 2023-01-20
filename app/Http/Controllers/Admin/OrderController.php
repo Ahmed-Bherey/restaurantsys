@@ -15,9 +15,13 @@ class OrderController extends Controller
     {
         OrderHidden::where('client_id', auth()->guard('client')->user()->id)->delete();
 
+        $user_id = 0;
+        if(isset(auth()->guard('web')->user()->id)){
+            $user_id = Auth::user()->id;
+        }
         foreach ($request->data['name'] as $key => $value)
             Order::create([
-                'user_id' => Auth::user()->id,
+                'user_id' => $user_id,
                 'client_id' => auth()->guard('client')->user()->id,
                 'orderHidden_id' => $request->data['orderHidden_id'][$key],
                 'table_id' => $request->table_id,
@@ -32,7 +36,7 @@ class OrderController extends Controller
                 'quantity' => $request->data['quantity'][$key],
                 'notes' => $request->notes,
             ]);
-        return redirect()->back()->with(['success' => 'تم الارسال بنجاح']);
+        return redirect()->route('web.index')->with(['success' => 'تم الارسال بنجاح']);
     }
 
     public function update(Request $request, $id)
