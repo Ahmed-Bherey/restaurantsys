@@ -103,6 +103,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     // عرض الطلبات
     Route::prefix('order')->controller(OrderController::class)->group(function () {
         Route::get('/', 'show')->name('order.show');
+        Route::get('/{id}', 'show_detailes')->name('order.show_detailes');
         Route::post('/{id}', 'update')->name('order.update');
         Route::get('/destroy/{id}', 'destroy')->name('order.destroy');
     });

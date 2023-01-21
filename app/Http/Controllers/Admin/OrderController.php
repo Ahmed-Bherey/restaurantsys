@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Delivery;
 use App\Models\OrderHidden;
 use App\Models\OrderTotal;
+use App\Models\Table;
 use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
@@ -16,8 +18,7 @@ class OrderController extends Controller
     public function show()
     {
         $orderTotals = OrderTotal::latest()->get();
-        $orderTotalCount = OrderTotal::count() + 1;
-        return view('admin.pages.orders.show', compact('orderTotals','orderTotalCount'));
+        return view('admin.pages.orders.show', compact('orderTotals'));
     }
 
     public function store(Request $request)
@@ -46,6 +47,16 @@ class OrderController extends Controller
                 'quantity' => $request->data['quantity'][$key],
             ]);
         return redirect()->route('web.index')->with(['success' => 'تم الارسال بنجاح']);
+    }
+
+    public function show_detailes($id)
+    {
+        $orderTotalCount = OrderTotal::count() + 1;
+        $orderTotal = OrderTotal::findOrFail($id);
+        $tables = Table::get();
+        $deliveries = Delivery::get();
+        $orders = Order::where('orderTotal_id',$id)->get();
+        return view('admin.pages.orders.show_detailes', compact('orderTotal','orders','tables','deliveries','orderTotalCount'));
     }
 
     public function update(Request $request, $id)

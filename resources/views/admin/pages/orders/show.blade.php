@@ -26,6 +26,7 @@
                                                         <td>رقم الطلب</td>
                                                         <td>تاريخ الطلب</td>
                                                         <td>طريقة الطلب</td>
+                                                        <td>التفاصيل</td>
                                                         <td>العناصر</td>
                                                         <td>السعر</td>
                                                         <th>عمليات</th>
@@ -35,26 +36,40 @@
                                                     @foreach ($orderTotals as $key => $orderTotal)
                                                         <tr class="odd">
                                                             <td>{{ $loop->iteration }}</td>
-                                                            <td><a href="#" class="btn btn-success">{{ str_pad($orderTotalCount , 7, '0', STR_PAD_LEFT) }}</a></td>
-                                                            <td>{{$orderTotal->created_at}}</td>
+                                                            <td><a href="{{ route('order.show_detailes', $orderTotal->id) }}"
+                                                                    class="btn btn-success">{{ str_pad($orderTotal->id, 5, '0', STR_PAD_LEFT) }}</a>
+                                                            </td>
+                                                            <td>{{ $orderTotal->created_at }}</td>
                                                             <td>
                                                                 @if ($orderTotal->receive_way == 1)
-                                                                    {{$orderTotal->tables->name}}
+                                                                    تناول الطلب فى المكان
                                                                 @elseif($orderTotal->receive_way == 2)
-                                                                    موعد الاستلام: {{$orderTotal->receive_time}}
-                                                                    الهاتف: {{$orderTotal->tel}}
+                                                                    استلام الطلب من المكان
                                                                 @else
-                                                                العنوان: {{$orderTotal->address}}
-                                                                منطقة التوصيل: {{$orderTotal->deliveries->name}}
+                                                                    توصيل
                                                                 @endif
                                                             </td>
-                                                            <td>{{$orderTotal->orders->count()}}</td>
-                                                            <td>{{$orderTotal->price}}</td>
+                                                            <td>
+                                                                @if ($orderTotal->receive_way == 1)
+                                                                    {{ $orderTotal->tables->areas->name }} -
+                                                                    {{ $orderTotal->tables->name }}
+                                                                @elseif($orderTotal->receive_way == 2)
+                                                                    موعد الاستلام: {{ $orderTotal->receive_time }}
+                                                                    الهاتف: {{ $orderTotal->tel }}
+                                                                @else
+                                                                    العنوان: {{ $orderTotal->address }}
+                                                                    منطقة التوصيل: {{ $orderTotal->deliveries->name }}
+                                                                @endif
+                                                            </td>
+                                                            <td>{{ $orderTotal->orders->count() }}</td>
+                                                            <td>{{ number_format($orderTotal->orders->sum('price'), 2) }} جـ
+                                                            </td>
                                                             <td class="d-flex">
                                                                 <form action="{{ route('order.update', $orderTotal->id) }}"
                                                                     method="POST">
                                                                     @csrf
-                                                                    <button type="submit" class="btn btn-success">قبول</button>
+                                                                    <button type="submit"
+                                                                        class="btn btn-success">قبول</button>
                                                                 </form>
                                                                 <a href="{{ route('order.destroy', $orderTotal->id) }}"
                                                                     type="submit" onclick="return confirm('Are you sure?')"
