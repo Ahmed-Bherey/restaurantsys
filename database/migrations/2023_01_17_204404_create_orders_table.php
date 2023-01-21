@@ -31,10 +31,10 @@ return new class extends Migration
             $table->longText('notes')->nullable();
             $table->timestamps();
             // $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            // $table->foreign('client_id')->references('id')->on('clients')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('client_id')->references('id')->on('clients')->onUpdate('cascade')->onDelete('cascade');
             // $table->foreign('orderHidden_id')->references('id')->on('order_hiddens')->onUpdate('cascade')->onDelete('cascade');
-            // $table->foreign('table_id')->references('id')->on('tables')->onUpdate('cascade')->onDelete('cascade');
-            // $table->foreign('delivery_id')->references('id')->on('deliveries')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('table_id')->references('id')->on('tables')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('delivery_id')->references('id')->on('deliveries')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

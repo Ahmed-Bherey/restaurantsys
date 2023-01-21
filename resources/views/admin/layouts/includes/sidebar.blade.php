@@ -82,7 +82,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('items.show') }}" class="nav-link">
+                    <a href="{{ route('order.show') }}" class="nav-link">
                         <i class="far fa-circle nav-icon green-1"></i>
                         <p>الطلبات</p>
                     </a>

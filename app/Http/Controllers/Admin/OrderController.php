@@ -11,17 +11,24 @@ use Illuminate\Support\Facades\Auth;
 class OrderController extends Controller
 {
     //
+
+    public function show()
+    {
+        $orders = Order::get();
+        return view('admin.pages.orders.show', compact('orders'));
+    }
+
     public function store(Request $request)
     {
         OrderHidden::where('client_id', auth()->guard('client')->user()->id)->delete();
 
-        $user_id = 0;
-        if(isset(auth()->guard('web')->user()->id)){
-            $user_id = Auth::user()->id;
-        }
+        // $user_id = 0;
+        // if(isset(auth()->guard('web')->user()->id)){
+        //     $user_id = Auth::user()->id;
+        // }
         foreach ($request->data['name'] as $key => $value)
             Order::create([
-                'user_id' => $user_id,
+                'user_id' => 0,
                 'client_id' => auth()->guard('client')->user()->id,
                 'orderHidden_id' => $request->data['orderHidden_id'][$key],
                 'table_id' => $request->table_id,

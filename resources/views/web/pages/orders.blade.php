@@ -45,7 +45,7 @@
                             </select>
                         </div>
                         <div class="col-12 col-md-4 mb-3 in_rest">
-                            <select required="required" class="form-control" name="table_id" id="table_id">
+                            <select class="form-control" name="table_id" id="table_id">
                                 <option value="">اختر الطاولة</option>
                                 @foreach ($tables as $table)
                                     <option value="{{ $table->id }}">{{ $table->areas->name }} - {{ $table->name }}

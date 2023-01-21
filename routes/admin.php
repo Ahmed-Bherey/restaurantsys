@@ -100,6 +100,12 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::post('/{id}', 'update')->name('delivery.update');
         Route::get('/destroy/{id}', 'destroy')->name('delivery.destroy');
     });
+    // عرض الطلبات
+    Route::prefix('order')->controller(OrderController::class)->group(function () {
+        Route::get('/', 'show')->name('order.show');
+        Route::post('/{id}', 'update')->name('order.update');
+        Route::get('/destroy/{id}', 'destroy')->name('order.destroy');
+    });
 });
 
 
@@ -112,7 +118,5 @@ Route::middleware('client')->group(function () {
     // الطلبات
     Route::prefix('order')->controller(OrderController::class)->group(function () {
         Route::post('/', 'store')->name('order.store');
-        Route::post('/{id}', 'update')->name('order.update');
-        Route::get('/destroy/{id}', 'destroy')->name('order.destroy');
     });
 });
