@@ -6,6 +6,7 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\OrderHidden;
+use App\Models\OrderTotal;
 use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
@@ -14,34 +15,35 @@ class OrderController extends Controller
 
     public function show()
     {
-        $orders = Order::get();
-        return view('admin.pages.orders.show', compact('orders'));
+        $orderTotals = OrderTotal::latest()->get();
+        $orderTotalCount = OrderTotal::count() + 1;
+        return view('admin.pages.orders.show', compact('orderTotals','orderTotalCount'));
     }
 
     public function store(Request $request)
     {
         OrderHidden::where('client_id', auth()->guard('client')->user()->id)->delete();
 
-        // $user_id = 0;
-        // if(isset(auth()->guard('web')->user()->id)){
-        //     $user_id = Auth::user()->id;
-        // }
+        $orderTotal = OrderTotal::create([
+            'user_id' => 0,
+            'client_id' => auth()->guard('client')->user()->id,
+            'orderHidden_id' => $request->orderHidden_id,
+            'table_id' => $request->table_id,
+            'delivery_id' => $request->delivery_id,
+            'receive_way' => $request->receive_way,
+            'receive_time' => $request->receive_time,
+            'tel' => $request->tel,
+            'address' => $request->address,
+            'notes' => $request->notes,
+        ]);
+
         foreach ($request->data['name'] as $key => $value)
             Order::create([
-                'user_id' => 0,
-                'client_id' => auth()->guard('client')->user()->id,
-                'orderHidden_id' => $request->data['orderHidden_id'][$key],
-                'table_id' => $request->table_id,
-                'delivery_id' => $request->delivery_id,
-                'receive_way' => $request->receive_way,
-                'receive_time' => $request->receive_time,
-                'tel' => $request->tel,
-                'address' => $request->address,
+                'orderTotal_id' => $orderTotal->id,
                 'img' => $request->data['img'][$key],
                 'name' => $value,
                 'price' => $request->data['price'][$key],
                 'quantity' => $request->data['quantity'][$key],
-                'notes' => $request->notes,
             ]);
         return redirect()->route('web.index')->with(['success' => 'تم الارسال بنجاح']);
     }
@@ -57,8 +59,8 @@ class OrderController extends Controller
 
     public function destroy($id)
     {
-        $order = Order::findOrFail($id);
-        $order->delete();
+        Order::where('orderTotal_id',$id)->delete();
+        OrderTotal::findOrFail($id)->delete();
         return redirect()->back()->with(['success' => "تم الرفض بنجاح"]);
     }
 }

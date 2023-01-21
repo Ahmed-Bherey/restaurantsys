@@ -23,50 +23,40 @@
                                                 <thead>
                                                     <tr>
                                                         <td>#</td>
-                                                        <td>العميل</td>
-                                                        <td>الاسم</td>
+                                                        <td>رقم الطلب</td>
+                                                        <td>تاريخ الطلب</td>
+                                                        <td>طريقة الطلب</td>
+                                                        <td>العناصر</td>
                                                         <td>السعر</td>
-                                                        <td>طريقة الاستقبال</td>
-                                                        <td colspan="2">تفاصيل الطلب</td>
-                                                        <td>ملاحظات</td>
                                                         <th>عمليات</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($orders as $key => $order)
+                                                    @foreach ($orderTotals as $key => $orderTotal)
                                                         <tr class="odd">
                                                             <td>{{ $loop->iteration }}</td>
-                                                            <td>{{ $order->clients->username }}</td>
-                                                            <td>X{{ $order->quantity }}{{ $order->name }}</td>
-                                                            <td>{{ $order->price }}</td>
+                                                            <td><a href="#" class="btn btn-success">{{ str_pad($orderTotalCount , 7, '0', STR_PAD_LEFT) }}</a></td>
+                                                            <td>{{$orderTotal->created_at}}</td>
                                                             <td>
-                                                                @if ($order->receive_way == 1)
-                                                                    تناول الطلب فى المكان
-                                                                @elseif($order->receive_way == 2)
-                                                                    استلام الطلب من المكان
+                                                                @if ($orderTotal->receive_way == 1)
+                                                                    {{$orderTotal->tables->name}}
+                                                                @elseif($orderTotal->receive_way == 2)
+                                                                    موعد الاستلام: {{$orderTotal->receive_time}}
+                                                                    الهاتف: {{$orderTotal->tel}}
                                                                 @else
-                                                                    توصيل
+                                                                العنوان: {{$orderTotal->address}}
+                                                                منطقة التوصيل: {{$orderTotal->deliveries->name}}
                                                                 @endif
                                                             </td>
-                                                            <td colspan="2">
-                                                                @if ($order->receive_way == 1)
-                                                                    الطاولة: {{ $order->tables->name }}
-                                                                @elseif($order->receive_way == 2)
-                                                                    موعد الاستلام: {{ $order->receive_time }}
-                                                                    رقم الهاتف: {{ $order->tel }}
-                                                                @else
-                                                                    العنوان: {{ $order->address }}
-                                                                    العنوان: {{ $order->deliveries->name }}
-                                                                @endif
-                                                            </td>
-                                                            <td>{{ $order->notes }}</td>
+                                                            <td>{{$orderTotal->orders->count()}}</td>
+                                                            <td>{{$orderTotal->price}}</td>
                                                             <td class="d-flex">
-                                                                <form action="{{ route('order.update', $order->id) }}"
+                                                                <form action="{{ route('order.update', $orderTotal->id) }}"
                                                                     method="POST">
                                                                     @csrf
                                                                     <button type="submit" class="btn btn-success">قبول</button>
                                                                 </form>
-                                                                <a href="{{ route('order.destroy', $order->id) }}"
+                                                                <a href="{{ route('order.destroy', $orderTotal->id) }}"
                                                                     type="submit" onclick="return confirm('Are you sure?')"
                                                                     class="btn btn-danger">رفض</a>
                                                             </td>
