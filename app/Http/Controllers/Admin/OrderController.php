@@ -36,6 +36,9 @@ class OrderController extends Controller
             'tel' => $request->tel,
             'address' => $request->address,
             'notes' => $request->notes,
+            'prepared' => 0,
+            'received' => 0,
+            'finished' => 0,
         ]);
 
         foreach ($request->data['name'] as $key => $value)
@@ -61,11 +64,26 @@ class OrderController extends Controller
 
     public function update(Request $request, $id)
     {
-        $order = Order::findOrFail($id);
-        $order->update([
+        $orderTotal = OrderTotal::findOrFail($id);
+        $prepared = 0;
+        if($request->prepared == 1){
+            $prepared = 1;
+        }
+        $received = 0;
+        if($request->received == 1){
+            $received = 1;
+        }
+        $finished = 0;
+        if($request->finished == 1){
+            $finished = 1;
+        }
+        $orderTotal->update([
             'user_id' => Auth::user()->id,
+            'prepared' => $prepared,
+            'received' => $received,
+            'finished' => $finished,
         ]);
-        return redirect()->back()->with(['success' => 'تم التأكيد بنجاح']);
+        return redirect()->route('order.show')->with(['success' => 'تم التأكيد بنجاح']);
     }
 
     public function destroy($id)

@@ -25,6 +25,9 @@ return new class extends Migration
             $table->string('tel')->nullable();
             $table->string('address')->nullable();
             $table->longText('notes')->nullable();
+            $table->integer('prepared')->nullable();
+            $table->integer('received')->nullable();
+            $table->integer('finished')->nullable();
             $table->timestamps();
             // $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('client_id')->references('id')->on('clients')->onUpdate('cascade')->onDelete('cascade');

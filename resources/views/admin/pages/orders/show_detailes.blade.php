@@ -82,11 +82,17 @@
                                         </select>
                                     </div>
                                 @endif
-
                                 <div class="col-12 col-md-4 mb-3">
                                     <textarea class="form-control" readonly rows="1" placeholder="ملاحظات مع الطلب ..." name="notes" id="notes">{{ $orderTotal->notes }}</textarea>
                                 </div>
                             </div>
+                            <form action="{{ route('order.update', $orderTotal->id) }}" method="POST">
+                                @csrf
+                                <input type="hidden" value="0" name="received">
+                                <input type="hidden" value="0" name="finished">
+                                <input type="hidden" value="1" name="prepared">
+                                <button type="submit" class="btn btn-primary">تم التجهيز</button>
+                            </form>
                         </div>
                     </section>
                 </div>

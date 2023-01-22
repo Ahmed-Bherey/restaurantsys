@@ -25,6 +25,9 @@ class OrderTotal extends Model
         'tel',
         'address',
         'notes',
+        'prepared',
+        'received',
+        'finished',
     ];
 
     public function users(){

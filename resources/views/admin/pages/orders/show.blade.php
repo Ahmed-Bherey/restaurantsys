@@ -37,7 +37,7 @@
                                                         <tr class="odd">
                                                             <td>{{ $loop->iteration }}</td>
                                                             <td><a href="{{ route('order.show_detailes', $orderTotal->id) }}"
-                                                                    class="btn btn-success">{{ str_pad($orderTotal->id, 5, '0', STR_PAD_LEFT) }}</a>
+                                                                    class="btn btn-success">#{{ str_pad($orderTotal->id, 5, '0', STR_PAD_LEFT) }}</a>
                                                             </td>
                                                             <td>{{ $orderTotal->created_at }}</td>
                                                             <td>
@@ -62,18 +62,51 @@
                                                                 @endif
                                                             </td>
                                                             <td>{{ $orderTotal->orders->count() }}</td>
-                                                            <td>{{ number_format($orderTotal->orders->sum('price'), 2) }} جـ
+                                                            <td>{{ number_format($orderTotal->orders->sum('price'), 2) }}
+                                                                جـ
                                                             </td>
                                                             <td class="d-flex">
-                                                                <form action="{{ route('order.update', $orderTotal->id) }}"
-                                                                    method="POST">
-                                                                    @csrf
-                                                                    <button type="submit"
-                                                                        class="btn btn-success">قبول</button>
-                                                                </form>
-                                                                <a href="{{ route('order.destroy', $orderTotal->id) }}"
-                                                                    type="submit" onclick="return confirm('Are you sure?')"
-                                                                    class="btn btn-danger">رفض</a>
+                                                                @if ($orderTotal->prepared == 1 && $orderTotal->received == 0)
+                                                                    <form
+                                                                        action="{{ route('order.update', $orderTotal->id) }}"
+                                                                        method="POST">
+                                                                        @csrf
+                                                                        <input type="hidden" value="1"
+                                                                            name="prepared">
+                                                                        <input type="hidden" value="1"
+                                                                            name="received">
+                                                                        <button type="submit" class="btn btn-primary">تم
+                                                                            الاستلام</button>
+                                                                    </form>
+                                                                @elseif($orderTotal->prepared == 1 && $orderTotal->received == 1 && $orderTotal->finished == 0)
+                                                                    <form
+                                                                        action="{{ route('order.update', $orderTotal->id) }}"
+                                                                        method="POST">
+                                                                        @csrf
+                                                                        <input type="hidden" value="1"
+                                                                            name="prepared">
+                                                                        <input type="hidden" value="1"
+                                                                            name="received">
+                                                                        <input type="hidden" value="1"
+                                                                            name="finished">
+                                                                        <button type="submit"
+                                                                            class="btn btn-primary">منتهى</button>
+                                                                    </form>
+                                                                @elseif($orderTotal->prepared == 1 && $orderTotal->received == 1 && $orderTotal->received == 1)
+                                                                    <p class="text-center text-gray">لا توجد اجراءات لك الان!</p>
+                                                                @else
+                                                                    <form
+                                                                        action="{{ route('order.update', $orderTotal->id) }}"
+                                                                        method="POST">
+                                                                        @csrf
+                                                                        <button type="submit"
+                                                                            class="btn btn-success">قبول</button>
+                                                                    </form>
+                                                                    <a href="{{ route('order.destroy', $orderTotal->id) }}"
+                                                                        type="submit"
+                                                                        onclick="return confirm('Are you sure?')"
+                                                                        class="btn btn-danger">رفض</a>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                     @endforeach
