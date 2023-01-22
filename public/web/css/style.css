@@ -350,7 +350,7 @@ footer {
     max-height: 90vh;
     z-index: 9999;
     padding: 10px;
-    overflow-x: scroll;
+    overflow: hidden;
     background-color: #ffffff;
     border-radius: 5px;
     transform: translate(-50%,-20%);
@@ -362,6 +362,9 @@ footer {
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
+}
+.product_model:hover{
+    overflow-y: scroll;
 }
 .product_content.hide_model .product_model{
     display: none;
