@@ -117,42 +117,42 @@
                         </div>
                     </div>
                 @endforeach
-                    <div class="col-12 col-lg-3 order_info mb-3 position-absolute">
-                        <div class="order_box">
-                            <div class="cat_title text-center">
-                                <p class="fw-bold">طلباتى</p>
-                                <p>الحد الأدنى للطلبات 10.00 جـ</p>
-                            </div>
-                            @if (auth()->guard('client')->check() && $orderHiddens->count() != 0)
-                                @foreach ($orderHiddens as $orderHidden)
-                                    <div class="order_items my-3 px-3">
-                                        <div class="d-flex justify-content-between">
-                                            <div class="countName d-flex">
-                                                <div class="d-flex">
-                                                    <div class="count">{{ $orderHidden->quantity }}</div>X
-                                                    <div class="name">{{ $orderHidden->name }}</div>
-                                                </div>
-                                            </div>
-                                            <div class="price ms-2">{{ number_format($orderHidden->price, 2) }}</div>
-                                            <a href="{{ route('orderHidden.destroy', $orderHidden->id) }}" class="romove"><i
-                                                    class="fa-solid fa-xmark"></i></a>
-                                        </div>
-                                    </div>
-                                @endforeach
-                                <div>
-                                    الاجمالى: {{ $orderHiddens->sum('price') }} جـ
-                                </div>
-                                <div>
-                                    <div class="text-center mt-3">
-                                        <a href="{{route('web.order')}}" class="btn btn-success ms-2">استكمال الطلب</a>
-                                        <a href="#" class="btn btn-danger">حذف الكل</a>
-                                    </div>
-                                </div>
-                            @else
-                                <div class="order_box_info text-center my-3">لا يوجد اى طلبات</div>
-                            @endif
+                <div class="col-12 col-lg-3 order_info mb-3 position-absolute">
+                    <div class="order_box">
+                        <div class="cat_title text-center">
+                            <p class="fw-bold">طلباتى</p>
+                            <p>الحد الأدنى للطلبات 10.00 جـ</p>
                         </div>
+                        @if (auth()->guard('client')->check() && $orderHiddens->count() != 0)
+                            @foreach ($orderHiddens as $orderHidden)
+                                <div class="order_items my-3 px-3">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="countName d-flex">
+                                            <div class="d-flex">
+                                                <div class="count">{{ $orderHidden->quantity }}</div>X
+                                                <div class="name">{{ $orderHidden->name }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="price ms-2">{{ number_format($orderHidden->price, 2) }}</div>
+                                        <a href="{{ route('orderHidden.destroy', $orderHidden->id) }}" class="romove"><i
+                                                class="fa-solid fa-xmark"></i></a>
+                                    </div>
+                                </div>
+                            @endforeach
+                            <div>
+                                الاجمالى: {{ $orderHiddens->sum('price') }} جـ
+                            </div>
+                            <div>
+                                <div class="text-center mt-3">
+                                    <a href="{{ route('web.order') }}" class="btn btn-success ms-2">استكمال الطلب</a>
+                                    <a href="#" class="btn btn-danger">حذف الكل</a>
+                                </div>
+                            </div>
+                        @else
+                            <div class="order_box_info text-center my-3">لا يوجد اى طلبات</div>
+                        @endif
                     </div>
+                </div>
 
             </div>
         </div>

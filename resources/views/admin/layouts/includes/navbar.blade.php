@@ -88,11 +88,12 @@
             </div>
         </li>
         <!-- Notifications Dropdown Menu -->
-        <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="#">
-                <i class="far fa-bell"></i>
-                <span class="badge badge-warning navbar-badge">15</span>
-
+        <li class="dropdown dropdown-notification nav-item  dropdown-notifications">
+            <a class="nav-link nav-link-label" href="#" data-toggle="dropdown">
+                <i class="fa fa-bell"> </i>
+                <span
+                    class="badge badge-pill badge-default badge-danger badge-default badge-up badge-glow   notif-count"
+                    data-count="9">9</span>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <span class="dropdown-item dropdown-header">15 Notifications</span>
@@ -117,9 +118,16 @@
         </li>
         <li class="nav-item">
 
-            <a class="nav-link" href="{{route('logout')}}">
+            <a class="nav-link" href="{{ route('logout') }}">
                 <i class="fas fa-sign-out-alt ml-2"></i>خروج
             </a>
         </li>
     </ul>
 </nav>
+
+{{-- <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="far fa-bell"></i>
+            <span class="badge badge-warning navbar-badge">15</span>
+
+        </a> --}}

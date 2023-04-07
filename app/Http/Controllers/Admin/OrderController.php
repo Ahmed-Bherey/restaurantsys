@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\OrderNotifaction;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -49,6 +50,7 @@ class OrderController extends Controller
                 'price' => $request->data['price'][$key],
                 'quantity' => $request->data['quantity'][$key],
             ]);
+
         return redirect()->route('web.index')->with(['success' => 'تم الارسال بنجاح']);
     }
 

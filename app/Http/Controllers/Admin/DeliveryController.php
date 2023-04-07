@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Delivery;
 use Illuminate\Http\Request;
+use App\Events\OrderNotifaction;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
