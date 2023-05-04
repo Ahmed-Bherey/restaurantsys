@@ -6,6 +6,16 @@
         <!-- Control sidebar content goes here -->
     </aside>
 </footer>
+
+<a href="#" class="order_notifaction position-fixed" id="orderNotifaction">
+    <div class="order_notifaction_info">
+        <p>طلب جديد من العميل <span>احمد عبدالوهاب</span></p>
+    </div>
+</a>
+
+
+
+
 <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
@@ -32,13 +42,24 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('public/admin/assets/dist/js/demo.js') }}"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+    crossorigin="anonymous"></script>
 <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
 <script>
     // Enable pusher logging - don't include this in production
     Pusher.logToConsole = true;
-    var pusher = new Pusher('80d42233109a38cdaf6a', {
+
+    var pusher = new Pusher('44a46a8e295dcf13ea53', {
         cluster: 'mt1'
     });
+
+    var channel = pusher.subscribe('resturant-channel');
+    var x = document.getElementById("audiotest");
+    var orderNotifaction = document.getElementById('orderNotifaction');
+    
+    channel.bind('resturant-notifaction', function(data) {
+        x.play();
+        orderNotifaction.classList.add('show');
+    });
 </script>
-<script src="{{ asset('public/web/js/ordernotify.js') }}"></script>
-<script src="{{ asset('public/admin/assets/dist/js/custom.js') }}"></script>

@@ -10,18 +10,21 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class OrderNotifaction
+class OrderNotifaction implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
+
+    public $ordernotifaction;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($ordernotifaction)
     {
         //
+        $this->ordernotifaction = $ordernotifaction;
     }
 
     /**
@@ -31,6 +34,11 @@ class OrderNotifaction
      */
     public function broadcastOn()
     {
-        return new channel('order-notifaction');
+        return new Channel('resturant-channel');
+    }
+
+    public function broadcastAs()
+    {
+        return 'resturant-notifaction';
     }
 }

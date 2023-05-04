@@ -51,6 +51,9 @@ class OrderController extends Controller
                 'quantity' => $request->data['quantity'][$key],
             ]);
 
+            $ordernotifaction = 'طلب جديد من العميل ' . auth()->guard('client')->user()->username;
+            event(new OrderNotifaction($ordernotifaction));
+
         return redirect()->route('web.index')->with(['success' => 'تم الارسال بنجاح']);
     }
 

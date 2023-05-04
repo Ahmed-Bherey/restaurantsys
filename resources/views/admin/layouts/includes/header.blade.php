@@ -12,17 +12,19 @@
     <link rel="stylesheet" href="{{ asset('public/admin/assets/dist/css/adminlte.css') }}">
     <link rel="stylesheet" href="{{ asset('public/admin/assets/plugins/daterangepicker/daterangepicker.css') }}">
     <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="{{ asset('public/admin/assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('public/admin/assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
 
     <!-- Bootstrap 4 RTL -->
     <link rel="stylesheet" href="{{ asset('public/admin/assets/dist/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('public/admin/assets/dist/css/bootstrap.min.css') }}">
     {{--
     <link rel="stylesheet" href="{{ asset('public/assets/dist/css/bootstrap.css') }}"> --}}
-    <link rel="stylesheet" href="{{ asset('public/admin/assets/plugins/datatables-bs4/css/dataTables.bootstrap4.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('public/admin/assets/plugins/datatables-bs4/css/dataTables.bootstrap4.css') }}">
 
     @include('admin.layouts.includes.datatable.css')
     <!-- Custom style for RTL -->
     <link rel="stylesheet" href="{{ asset('public/admin/assets/dist/css/custom.css') }}">
-    <script src="{{asset('public/admin/assets/dist/js/jQuery.js')}}"></script>
+    <script src="{{ asset('public/admin/assets/dist/js/jQuery.js') }}"></script>
 </head>

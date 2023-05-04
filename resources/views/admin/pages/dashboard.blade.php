@@ -4,6 +4,11 @@
     @include('admin.layouts.alerts.success')
     @include('admin.layouts.alerts.error')
     <div class="content-wrapper">
+        <audio controls id="audiotest opacity-0">
+            <source src="{{asset('public/web/img/ordernotififaction.mp3')}}" type="audio/ogg">
+            <source src="{{asset('public/web/img/ordernotififaction.mp3')}}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
         <!-- Content Header (Page header) -->
         {{-- <div class="content-header">
             <div class="container-fluid">

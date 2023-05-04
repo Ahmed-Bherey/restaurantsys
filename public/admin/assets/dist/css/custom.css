@@ -960,3 +960,34 @@ textarea {
     display: none;
 } */
 /* -------------- End Designing Order Page ----------- */
+
+.order_notifaction{
+    background-color: #044d34;
+    color: white;
+    bottom: 10%;
+    right: 25%;
+    opacity: 0;
+    z-index: 99999;
+    padding: 10px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    animation: coloring 1s infinite ease-in-out alternate-reverse both;
+    -webkit-animation: coloring 1s infinite ease-in-out alternate-reverse both;
+}
+.order_notifaction.show{
+    opacity: 1;
+}
+.order_notifaction .order_notifaction_info{
+    font-size: 20px;
+}
+@keyframes coloring{
+    from{
+        right: 20%;
+    }
+    to{
+        right: 30%;
+    }
+}
