@@ -66,6 +66,43 @@
                                     </div>
                                     {{-- row 1 --}}
                                 </div>
+                                <div class="card-body">
+                                    <table id="example2" class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>اسم الاضافة</th>
+                                                <th>السعر</th>
+                                                <th>العملية</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbody">
+                                            <tr>
+                                                <td>
+                                                    <input type="text" class="form-control" placeholder="اسم الاضافة"
+                                                        name="data[extra_name][]">
+                                                </td>
+                                                <td>
+                                                    <input type="number" class="form-control amount" step="0.1"
+                                                        id="quantity" placeholder="السعر" name="data[extra_price][]">
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn bg-success" id="add">
+                                                        <i class="fas fa-plus-square"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            </tfoot>
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                                <div class="card-footer">
+                                    <button type="submit" class="btn bg-success-2 mr-3">
+                                        <i class="fa fa-check text-light" aria-hidden="true"></i>
+                                    </button>
+                                    <button class="btn bg-secondary" type="reset">
+                                        <i class="fas fa-undo"></i>
+                                    </button>
+                                </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
                                     <button type="submit" class="btn bg-success-2 mr-3">
@@ -154,4 +191,32 @@
             </div>
         </div>
     </div>
+
+    <script>
+        let add = document.getElementById('add'),
+                tbody = document.getElementById('tbody');
+            add.addEventListener(('click'), () => {
+                var new_row = document.createElement('tr')
+                new_row.innerHTML =
+                    `
+                    <td>
+                    <input type="text" class="form-control" placeholder="اسم الاضافة"
+                        name="data[extra_name][]">
+                </td>
+                <td>
+                    <input type="number" class="form-control amount" step="0.1"
+                        id="quantity" placeholder="السعر" name="data[extra_price][]">
+                </td>
+                <td>
+                        <button type="button" class="btn bg-danger" onclick='delet(this),calculate() '>
+                            <i class="fas fa-trash-alt text-light"></i>
+                        </button>
+                    </td>`;
+                tbody.appendChild(new_row)
+            })
+    
+            function delet(ele) {
+                ele.parentElement.parentElement.remove()
+            }
+    </script>
 @endsection

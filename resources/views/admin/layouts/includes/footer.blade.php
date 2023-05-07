@@ -7,9 +7,11 @@
     </aside>
 </footer>
 
-<a href="#" class="order_notifaction position-fixed" id="orderNotifaction">
+<a href="{{ route('order.show_detailes', App\Models\OrderTotal::latest()->first()->id+1) }}" class="order_notifaction position-fixed" id="orderNotifaction">
     <div class="order_notifaction_info">
-        <p>طلب جديد من العميل <span>احمد عبدالوهاب</span></p>
+        @if(auth()->guard('client')->check())
+        <p>طلب جديد من العميل <span>{{auth()->guard('client')->user()->username}}</span></p>
+        @endif
     </div>
 </a>
 
@@ -55,7 +57,7 @@
     });
 
     var channel = pusher.subscribe('resturant-channel');
-    var x = document.getElementById("audiotest");
+    var x = document.getElementById("audiotestt");
     var orderNotifaction = document.getElementById('orderNotifaction');
     
     channel.bind('resturant-notifaction', function(data) {
