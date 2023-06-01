@@ -75,7 +75,7 @@
                                                                 <input class="form-check-input" type="checkbox"
                                                                     value="" id="flexCheckDefault">
                                                                 <label class="form-check-label" for="flexCheckDefault">
-                                                                    جبنة اضافية
+                                                                    جبن موزاريلا
                                                                 </label>
                                                             </div>
                                                             <p class="price">10.00 جـ</p>
@@ -85,7 +85,7 @@
                                                                 <input class="form-check-input" type="checkbox"
                                                                     value="" id="flexCheckDefault">
                                                                 <label class="form-check-label" for="flexCheckDefault">
-                                                                    جبنة اضافية
+                                                                    طماطم 
                                                                 </label>
                                                             </div>
                                                             <p class="price">10.00 جـ</p>
@@ -95,7 +95,7 @@
                                                                 <input class="form-check-input" type="checkbox"
                                                                     value="" id="flexCheckDefault">
                                                                 <label class="form-check-label" for="flexCheckDefault">
-                                                                    جبنة اضافية
+                                                                    بصل
                                                                 </label>
                                                             </div>
                                                             <p class="price">10.00 جـ</p>

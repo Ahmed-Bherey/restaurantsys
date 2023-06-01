@@ -149,8 +149,25 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="far fa-circle nav-icon green-1"></i>
-                        <p>المالية</p>
+                        <p>
+                            المالية
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('treasury.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon green-1"></i>
+                                <p>الخزائن</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon green-1"></i>
+                                <p>التحويل من خزينة لاخرى</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">

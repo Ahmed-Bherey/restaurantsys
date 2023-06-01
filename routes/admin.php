@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\OrderHiddenController;
 use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\Admin\TableController;
 use App\Http\Controllers\Admin\TeamController;
+use App\Http\Controllers\Admin\TreasuryController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -106,6 +107,14 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('/{id}', 'show_detailes')->name('order.show_detailes');
         Route::post('/{id}', 'update')->name('order.update');
         Route::get('/destroy/{id}', 'destroy')->name('order.destroy');
+    });
+    // اضافة خزينة
+    Route::prefix('treasury')->controller(TreasuryController::class)->group(function () {
+        Route::get('/', 'create')->name('treasury.create');
+        Route::post('/', 'store')->name('treasury.store');
+        Route::get('/{id}', 'edit')->name('treasury.edit');
+        Route::post('/{id}', 'update')->name('treasury.update');
+        Route::get('/destroy/{id}', 'destroy')->name('treasury.destroy');
     });
 });
 
