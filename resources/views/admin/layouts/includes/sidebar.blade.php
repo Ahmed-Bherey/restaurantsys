@@ -162,7 +162,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{route('treasuryTransfer.create')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon green-1"></i>
                                 <p>التحويل من خزينة لاخرى</p>
                             </a>

@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\Admin\TableController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\TreasuryController;
+use App\Http\Controllers\Admin\TreasuryTransferController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -115,6 +116,14 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('/{id}', 'edit')->name('treasury.edit');
         Route::post('/{id}', 'update')->name('treasury.update');
         Route::get('/destroy/{id}', 'destroy')->name('treasury.destroy');
+    });
+    // التحويل من خزينة لاخرى
+    Route::prefix('treasuryTransfer')->controller(TreasuryTransferController::class)->group(function () {
+        Route::get('/', 'create')->name('treasuryTransfer.create');
+        Route::post('/', 'store')->name('treasuryTransfer.store');
+        Route::get('/{id}', 'edit')->name('treasuryTransfer.edit');
+        Route::post('/{id}', 'update')->name('treasuryTransfer.update');
+        Route::get('/destroy/{id}', 'destroy')->name('treasuryTransfer.destroy');
     });
 });
 

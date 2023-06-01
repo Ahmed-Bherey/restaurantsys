@@ -10,6 +10,7 @@ use App\Models\Delivery;
 use App\Models\OrderHidden;
 use App\Models\OrderTotal;
 use App\Models\Table;
+use App\Models\Treasury;
 use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
@@ -51,8 +52,14 @@ class OrderController extends Controller
                 'quantity' => $request->data['quantity'][$key],
             ]);
 
-            $ordernotifaction = 'طلب جديد من العميل ' . auth()->guard('client')->user()->username;
-            event(new OrderNotifaction($ordernotifaction));
+        $sumPrice = Order::where('orderTotal_id', $orderTotal->id)->sum('price');
+        $treasuryBalance = Treasury::where('active', 1)->value('balance');
+        Treasury::where('active', 1)->update([
+            'balance' => $treasuryBalance + $sumPrice,
+        ]);
+
+        $ordernotifaction = 'طلب جديد من العميل ' . auth()->guard('client')->user()->username;
+        event(new OrderNotifaction($ordernotifaction));
 
         return redirect()->route('web.index')->with(['success' => 'تم الارسال بنجاح']);
     }
@@ -63,23 +70,23 @@ class OrderController extends Controller
         $orderTotal = OrderTotal::findOrFail($id);
         $tables = Table::get();
         $deliveries = Delivery::get();
-        $orders = Order::where('orderTotal_id',$id)->get();
-        return view('admin.pages.orders.show_detailes', compact('orderTotal','orders','tables','deliveries','orderTotalCount'));
+        $orders = Order::where('orderTotal_id', $id)->get();
+        return view('admin.pages.orders.show_detailes', compact('orderTotal', 'orders', 'tables', 'deliveries', 'orderTotalCount'));
     }
 
     public function update(Request $request, $id)
     {
         $orderTotal = OrderTotal::findOrFail($id);
         $prepared = 0;
-        if($request->prepared == 1){
+        if ($request->prepared == 1) {
             $prepared = 1;
         }
         $received = 0;
-        if($request->received == 1){
+        if ($request->received == 1) {
             $received = 1;
         }
         $finished = 0;
-        if($request->finished == 1){
+        if ($request->finished == 1) {
             $finished = 1;
         }
         $orderTotal->update([
@@ -93,7 +100,7 @@ class OrderController extends Controller
 
     public function destroy($id)
     {
-        Order::where('orderTotal_id',$id)->delete();
+        Order::where('orderTotal_id', $id)->delete();
         OrderTotal::findOrFail($id)->delete();
         return redirect()->back()->with(['success' => "تم الرفض بنجاح"]);
     }

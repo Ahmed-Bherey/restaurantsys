@@ -13,16 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('treasuries', function (Blueprint $table) {
+        Schema::create('treasury_transfers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->string('date')->nullable();
-            $table->string('name')->nullable();
-            $table->string('treasury_secretary')->nullable();
-            $table->float('balance')->nullable();
-            $table->integer('active')->nullable();
+            $table->unsignedBigInteger('treasuryFrom_id')->nullable();
+            $table->unsignedBigInteger('treasuryTo_id')->nullable();
+            $table->float('amount')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('treasuryFrom_id')->references('id')->on('treasuries')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('treasuryTo_id')->references('id')->on('treasuries')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('treasuries');
+        Schema::dropIfExists('treasury_transfers');
     }
 };

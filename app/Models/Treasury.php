@@ -15,6 +15,7 @@ class Treasury extends Model
         'name',
         'treasury_secretary',
         'balance',
+        'active',
     ];
 
     public function users()
