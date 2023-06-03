@@ -76,13 +76,15 @@
                                     <div class="small-box bg-cyan">
                                         <div class="inner nums">
                                             <h3 class="num" data-goal="#">
-                                                
+                                                {{ \App\Models\Expense::sum('amount') }} جـ
                                             </h3>
                                             <p>المصروفات</p>
                                         </div>
                                         <div class="icon">
                                             <i
-                                                class="ion ion-stats-bars"></i>
+                                                class="ion ion-stats-bars">
+                                                {{ \App\Models\Expense::sum('amount') }}
+                                            </i>
                                         </div>
                                         <a href="#" class="small-box-footer">More info <i
                                                 class="fas fa-arrow-circle-right"></i></a>
@@ -95,13 +97,13 @@
                                     <div class="small-box bg-danger">
                                         <div class="inner nums">
                                             <h3 class="num" data-goal="#">
-                                                
+                                                0
                                             </h3>
                                             <p>الزيارات</p>
                                         </div>
                                         <div class="icon">
                                             <i
-                                                class="ion ion-stats-bars"></i>
+                                                class="ion ion-stats-bars">0</i>
                                         </div>
                                         <a href="#" class="small-box-footer">More info <i
                                                 class="fas fa-arrow-circle-right"></i></a>

@@ -303,6 +303,7 @@ header .btns {
     -moz-border-radius: 7px;
     -ms-border-radius: 7px;
     -o-border-radius: 7px;
+    box-shadow: 1px 2px 5px grey;
 }
 .orders_page .order_items .order_items_box .order_items_box_content .order_items_box_img img{
     max-width: 250px;

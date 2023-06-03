@@ -134,12 +134,12 @@
                         <p>مناطق التوصيل</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="far fa-circle nav-icon green-1"></i>
                         <p>سيستم POS</p>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a href="{{route('team.create')}}" class="nav-link">
                         <i class="far fa-circle nav-icon green-1"></i>

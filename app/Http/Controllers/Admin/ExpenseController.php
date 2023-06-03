@@ -7,6 +7,7 @@ use App\Models\Supplier;
 use Illuminate\Http\Request;
 use App\Models\ExpenseSection;
 use App\Http\Controllers\Controller;
+use App\Models\Treasury;
 use Illuminate\Support\Facades\Auth;
 
 class ExpenseController extends Controller
@@ -17,7 +18,7 @@ class ExpenseController extends Controller
         $expenseSections = ExpenseSection::get();
         $suppliers = Supplier::get();
         $expenses = Expense::get();
-        return view('admin.pages.expenses.create', compact('expenses','expenseSections','suppliers'));
+        return view('admin.pages.expenses.create', compact('expenses', 'expenseSections', 'suppliers'));
     }
 
     public function store(Request $request)
@@ -30,6 +31,10 @@ class ExpenseController extends Controller
             'amount' => $request->amount,
             'notes' => $request->notes,
         ]);
+        $treasuryBalance = Treasury::where('active', 1)->value('balance');
+        Treasury::where('active', 1)->update([
+            'balance' => $treasuryBalance - $request->amount,
+        ]);
         return redirect()->back()->with(['success' => "تم الحفظ بنجاح"]);
     }
 
@@ -38,12 +43,21 @@ class ExpenseController extends Controller
         $expenseSections = ExpenseSection::get();
         $suppliers = Supplier::get();
         $expense = Expense::findOrFail($id);
-        return view('admin.pages.expenses.edit', compact('expense','expenseSections','suppliers'));
+        return view('admin.pages.expenses.edit', compact('expense', 'expenseSections', 'suppliers'));
     }
 
     public function update(Request $request, $id)
     {
         $expense = Expense::findOrFail($id);
+        $expenseAmount = Expense::where('id', $expense->id)
+            ->where('supplier_id', $request->supplier_id)
+            ->where('expenseSection_id', $request->expenseSection_id)
+            ->value('amount');
+        $data = $expenseAmount - $request->amount;
+        $treasuryBalance = Treasury::where('active', 1)->value('balance');
+        Treasury::where('active', 1)->update([
+            'balance' => $treasuryBalance + $data,
+        ]);
         $expense->update([
             'user_id' => Auth::user()->id,
             'supplier_id' => $request->supplier_id,
@@ -52,6 +66,7 @@ class ExpenseController extends Controller
             'amount' => $request->amount,
             'notes' => $request->notes,
         ]);
+
         return redirect()->route('expense.create')->with(['success' => "تم التحديث بنجاح"]);
     }
 
