@@ -27,4 +27,5 @@
     <!-- Custom style for RTL -->
     <link rel="stylesheet" href="{{ asset('public/admin/assets/dist/css/custom.css') }}">
     <script src="{{ asset('public/admin/assets/dist/js/jQuery.js') }}"></script>
+    
 </head>
