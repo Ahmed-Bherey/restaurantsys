@@ -29,3 +29,8 @@
     <script src="{{ asset('public/admin/assets/dist/js/jQuery.js') }}"></script>
     
 </head>
+<audio id="audiotestt">
+    <source src="{{asset('public/web/img/ordernotififaction.mp3')}}" type="audio/ogg">
+    <source src="{{asset('public/web/img/ordernotififaction.mp3')}}" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
