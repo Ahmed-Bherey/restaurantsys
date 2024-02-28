@@ -29,6 +29,16 @@ $(document).ready(function(){
         console.log($('#quantity').val())
     });
 
+    $('.client_opinion_btn').click(function(){
+        $('.client_opinion').css('display','block');
+        $('.overflew').css('display','block');
+    });
+
+    $('.overflew').click(function(){
+        $('.client_opinion').css('display','none');
+        $('.overflew').css('display','none');
+    });
+
     $('.receive_way_opts').change(function(){
         if($('.receive_way_opts').val() == 1){
             $('.in_rest').css('display','block')

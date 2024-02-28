@@ -287,6 +287,40 @@ header .btns {
 
 /* -------------- End Designing Waiter Section ----------- */
 
+/* -------------- Start Designing Client Opinion Section ----------- */
+.client_opinion {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background-color: rgb(59, 156, 91);
+    padding: 10px;
+    width: 30%;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    display: none;
+}
+
+.client_opinion .title {
+    padding-bottom: 10px;
+    font-family: 'waiter';
+}
+.client_opinion textarea{
+    min-height: 100px;
+    font-family: 'waiter';
+}
+
+/* -------------- End Designing Client Opinion Section ----------- */
+
+
 /* -------------- Start Designing Order Page ----------- */
 .orders_page{
     min-height: 68vh;

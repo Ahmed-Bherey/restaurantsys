@@ -123,7 +123,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{route('opinion.show')}}" class="nav-link">
                         <i class="far fa-circle nav-icon green-1"></i>
                         <p>سجل العملاء</p>
                     </a>

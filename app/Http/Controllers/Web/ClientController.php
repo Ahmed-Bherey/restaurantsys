@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Web;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\ClientOpinion;
+use App\Models\OrderHidden;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Session;
@@ -48,6 +50,7 @@ class ClientController extends Controller
 
     public function logout()
     {
+        OrderHidden::where('client_id',auth()->guard('client')->user()->id)->delete();
         auth()->guard('client')->logout();
         Session::forget('yourKeyGoesHere');
         session()->regenerate();
@@ -55,5 +58,20 @@ class ClientController extends Controller
         return redirect()
             ->route('web.index')
             ->with(['success' => '☹️ ' . 'تم الخروج بنجاح']);
+    }
+
+    public function opinionStore(Request $request)
+    {
+        ClientOpinion::create([
+            'clicnt_id' => auth()->guard('client')->user()->id,
+            'opinion' => $request->opinion,
+        ]);
+        return redirect()->back()->with(['success' => "تم ارسال رأيك بنجاح"]);
+    }
+
+    public function opinionShow(Request $request)
+    {
+        $opinions = ClientOpinion::get();
+        return view('admin.pages.clientOpinion.show', compact('opinions'));
     }
 }

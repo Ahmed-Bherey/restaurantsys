@@ -4,7 +4,7 @@
             ({{ Cart::getTotalQuantity()}})
             <i class="fa-solid fa-cart-shopping"></i>
         </a>
-        <a href="#" class="btn btn-danger fw-bold">شاركنا رأيك</a>
+        <a href="#" class="btn btn-danger fw-bold client_opinion_btn">شاركنا رأيك</a>
         <a href="#" class="btn btn-danger fw-bold waiter_request">طلب الجرسون</a>
         @if(auth()->guard('client')->check())
         <a href="{{route('client.logout')}}" class="btn btn-danger fw-bold">تسجيل الخروج</a>
