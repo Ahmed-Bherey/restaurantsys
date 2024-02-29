@@ -23,7 +23,7 @@
         <h3 class="title text-center">رأيك يهمنا</h3>
         <form action="{{ route('opinion.store') }}" method="post">
             @csrf
-            <textarea class="form-control" rows="1" placeholder="رأيك ..." name="opinion" id="opinion"></textarea>
+            <textarea class="form-control mb-3" rows="1" placeholder="رأيك ..." name="opinion" id="opinion"></textarea>
             <!-- /.card-body -->
             <div class="card-footer">
                 <button type="submit" class="btn bg-success-2 mr-3">

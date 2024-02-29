@@ -74,4 +74,11 @@ class ClientController extends Controller
         $opinions = ClientOpinion::get();
         return view('admin.pages.clientOpinion.show', compact('opinions'));
     }
+
+    public function clientOpiniondelete($id)
+    {
+        $opinion = ClientOpinion::findOrFail($id);
+        $opinion->delete();
+        return redirect()->back()->with(['success' => "تم الحذف بنجاح"]);
+    }
 }

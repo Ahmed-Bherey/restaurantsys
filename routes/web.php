@@ -32,6 +32,7 @@ Route::controller(ClientController::class)->prefix('web')->group(function () {
     Route::get('logout', 'logout')->name('client.logout');
     Route::post('opinion', 'opinionStore')->name('opinion.store');
     Route::get('clientOpinion', 'opinionShow')->name('opinion.show');
+    Route::get('clientOpiniondelete/{id}', 'clientOpiniondelete')->name('opinion.delete');
 });
 
 Route::controller(HomeController::class)->group(function () {

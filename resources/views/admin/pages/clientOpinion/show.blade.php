@@ -5,6 +5,8 @@
         <div class="content-header">
             <div class="container-fluid">
                 {{-- start card table --}}
+                @include('admin.layouts.alerts.success')
+                @include('admin.layouts.alerts.error')
                 <div class="row mt-1">
                     <div class="col-sm-12 col-lg-12">
                         <div class="card">
@@ -36,10 +38,7 @@
                                                             <td>{{ $opinion->clicnts->username }}</td>
                                                             <td>{{ $opinion->opinion }}</td>
                                                             <td>
-                                                                <a href="#"
-                                                                    type="submit" class="btn bg-secondary"><i
-                                                                        class="far fa-edit" aria-hidden="true"></i></a>
-                                                                <a href="#"
+                                                                <a href="{{ route('opinion.delete', $opinion->id) }}"
                                                                     type="submit" onclick="return confirm('Are you sure?')"
                                                                     class="btn btn-danger"><i
                                                                         class="fas fa-trash-alt"></i></a>
